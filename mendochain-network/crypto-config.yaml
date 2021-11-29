@@ -1,0 +1,37 @@
+OrdererOrgs:
+    - Name: Orderer
+      Domain: mendochain.com
+      EnableNodeOUs: true
+      Specs:
+        - Hostname: orderer
+          SANS:
+            - localhost 
+PeerOrgs:
+    - Name: Org1
+      Domain: org1.mendochain.com
+      EnableNodeOUs: true
+      Template:
+        Count: 1
+        SANS:
+          - localhost
+      Users:
+        Count: 1
+    - Name: Org2
+      Domain: org2.mendochain.com
+      EnableNodeOUs: true
+      Template:
+        Count: 1
+        SANS:
+          - localhost
+      Users:
+        Count: 1
+    - Name: Org3
+      Domain: org3.mendochain.com
+      EnableNodeOUs: true    
+      Template:
+        Count: 1
+        SANS:
+          - localhost
+      Users:
+        Count: 1
+  
