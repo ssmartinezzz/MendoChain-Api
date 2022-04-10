@@ -32,7 +32,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = "/static/"
 
-ON_HEROKU = False
+ON_HEROKU = True
 HEROKU_SERVER = os.environ.get('HEROKU_SERVER')
 
 # Extra places for collectstatic to find static files.
