@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+body {
+    height: 100vh;
+    min-height: 400px;
+    background-image: url('view/home/background-react-dif.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(1, 1fr);
+    padding: 16px;
+    @media (min-width: 600px) {
+        grid-gap: 24px;
+        padding: 24px;
+    }
+}
+
+.mat-card {
+    padding: 24px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+        0 1px 10px 0 rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    background-color: #fffe;
+}
+
+.mat-card h1 {
+    margin: auto;
+}
+
+.mat-card .login-input {
+    padding: 24px;
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.mat-card .item-card {
+    margin: 5px;
+}
+
+.mat-card .btn-submit {
+    margin: auto;
+}
+
+.container-table {
+    width: 85%;
+    margin: auto;
+    padding: 45px;
+    box-sizing: border-box;
+}
+
+.table-cell-btn {
+    width: 50px;
+}

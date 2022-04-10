@@ -1,0 +1,44 @@
+.home {
+    height: 100vh;
+    min-height: 400px;
+    display: grid;
+    background-image: url('./background-react.jpg');
+    background-position: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.home img {
+    width: 100%;
+    height: auto;
+}
+
+.home p {
+    text-align: center;
+    color: white;
+}
+
+.home__info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 24px;
+}
+
+.home__info-container div > *:first-child {
+    margin-right: 16px;
+}
+
+.home__title {
+    color: white;
+}
+
+.home h1 {
+    font-size: 50px;
+}
+
+.home button {
+    font-size: 19px;
+}
