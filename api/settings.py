@@ -14,7 +14,6 @@ import datetime
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -26,6 +25,20 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = []
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+ON_HEROKU = False
+HEROKU_SERVER = os.environ.get('HEROKU_SERVER')
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # Application definition
 
@@ -76,15 +89,8 @@ WSGI_APPLICATION = 'api.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-if os.getenv("DB_TYPE") == "sqlite":
-    DATABASES = {
-        'default': {
-            'ENGINE': os.getenv("DB_ENGINE"),
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-
+if ON_HEROKU:
+    DATABASE_URL = 'postgresql://<postgresql>'
 else:
     DATABASES = {
         'default': {
@@ -96,6 +102,9 @@ else:
             'PORT': os.getenv("DB_PORT"),
         }
     }
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -153,4 +162,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+
+
