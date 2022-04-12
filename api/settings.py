@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 import datetime
 from pathlib import Path
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
@@ -19,7 +20,7 @@ from pathlib import Path
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv('SECRET_KEY',default="Thisisakey")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -89,17 +90,17 @@ WSGI_APPLICATION = 'api.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-if ON_HEROKU:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3")
-        }
-    }
-else:
-    DATABASES = {
+# if ON_HEROKU:
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.postgresql_psycopg2",
+#             "NAME": os.path.join(BASE_DIR, "db.sqlite3")
+#         }
+#     }
+# else:
+DATABASES = {
         'default': {
-            'ENGINE': os.getenv("DB_ENGINE"),
+            'ENGINE': "django.db.backends.postgresql_psycopg2",
             'NAME': os.getenv("DB_NAME"),
             'USER': os.getenv("DB_USER"),
             'PASSWORD': os.getenv("DB_PASSWORD"),
@@ -163,6 +164,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+django_heroku.settings(locals())
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
