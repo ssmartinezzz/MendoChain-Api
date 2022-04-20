@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 class Wine(models.Model):
     variety_name = models.CharField(max_length=100, null=False)
 
@@ -12,6 +11,8 @@ class Wine(models.Model):
     brand_name = models.CharField(max_length=100, null=False)
 
     lote = models.CharField(max_length=50, null=False)
+
+    year = models.CharField(max_length=50, null=False)
 
 
 class Transaction(models.Model):
