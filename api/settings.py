@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv('SECRET_KEY',default="Thisisakey")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mendochain.herokuapp.com']
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Static files (CSS, JavaScript, Images)
@@ -150,7 +150,7 @@ SIMPLE_JWT = {
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'https://mendochainweb.herokuapp.com/'
+    'chttps://mendochainweb.herokuapp.com/'
 )
 
 # Internationalization
