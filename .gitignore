@@ -3,4 +3,4 @@
 venv/
 db.sqlite3
 *.pyc
-api/__pycache__/
+api/backend/__pycache__/
