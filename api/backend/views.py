@@ -60,6 +60,24 @@ def wine_detail_api(request, pk=None):
             return Response(wine_serializer.errors, status = status.HTTP_400_BAD_REQUEST)
     return Response({'message':"Wine not found"}, status = status.HTTP_400_BAD_REQUEST)
 
+@api_view(['POST', 'GET'])
+def create_block_transaction(request, pk=None):
+    transaction_serializer = TransactionSerializer(data=request.data)
+
+    if request.method =='POST':
+        if transaction_serializer.is_valid():
+            transaction_serializer.save()
+            return Response(transaction_serializer.data, status=status.HTTP_201_CREATED)
+        return Response(transaction_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == 'GET':
+        transaction = Transaction.objects.filter(id=pk).first()
+        transaction_serializer = TransactionSerializer(transaction)
+        return Response(transaction_serializer.data, status = status.HTTP_200_OK)
+
+
+
+
 
 
 
