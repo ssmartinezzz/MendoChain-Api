@@ -7,9 +7,10 @@ import os
 
 
 def first_transaction_example(private_key, my_address):
+   
     algo_address_local = "http://localhost:4001"
-    algod_address = "http://testnet-api.algonode.network"
-    algod_token = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    algod_address = "https://testnet-api.algonode.cloud"
+    algod_token = ""
     algod_client = algod.AlgodClient(algod_token, algod_address)
 
     account_info = algod_client.account_info(my_address)
