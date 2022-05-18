@@ -21,7 +21,7 @@ class TransactionSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return Transaction.objects.create(
             quantity=validated_data['quantity'],
-            transaction_id=first_transaction_example(private_key= os.getenv("PRIVATE_KEY"), my_address=os.getenv("WALLET_ADD")),
+            transaction_id=first_transaction_example(private_key=os.getenv("PRIVATE_KEY"), my_address=os.getenv("WALLET_ADD")),
             wine=validated_data['wine'],
 
         )

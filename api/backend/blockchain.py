@@ -7,11 +7,11 @@ import os
 
 
 def first_transaction_example(private_key, my_address):
-    algod_address = "http://localhost:4001"
+    algo_address_local = "http://localhost:4001"
+    algod_address = "http://testnet-api.algonode.network"
     algod_token = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     algod_client = algod.AlgodClient(algod_token, algod_address)
 
-    print("My address: {}".format(my_address))
     account_info = algod_client.account_info(my_address)
     print("Account balance: {} microAlgos".format(account_info.get('amount')))
 
