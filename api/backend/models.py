@@ -14,6 +14,8 @@ class Wine(models.Model):
 
     year = models.CharField(max_length=50, null=False)
 
+    visibility = models.BooleanField(default=1)
+
 
 class Transaction(models.Model):
     quantity = models.IntegerField(null=False)
@@ -21,5 +23,7 @@ class Transaction(models.Model):
     transaction_id = models.CharField(max_length=200, null=False)
 
     wine = models.ForeignKey(Wine, on_delete=models.CASCADE, related_name='transactions')
+
+    visibility = models.BooleanField(default=1)
 
 
