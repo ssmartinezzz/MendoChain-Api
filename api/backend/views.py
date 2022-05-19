@@ -28,13 +28,13 @@ class TransactionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 
 
 class TransactionList(generics.ListCreateAPIView):
-    queryset = Transaction.objects.all()
+    queryset = Transaction.objects.filter(visibility=1)
     serializer_class = TransactionSerializer
 
 @api_view(['GET', 'POST'])
 def wine_api_view(request):
     if request.method == 'GET':
-        wines = Wine.objects.all()
+        wines = Wine.objects.filter(visibility=1)
         wine_serializer = WineSerializer(wines, many=True)
         return Response(wine_serializer.data, status = status.HTTP_200_OK)
 

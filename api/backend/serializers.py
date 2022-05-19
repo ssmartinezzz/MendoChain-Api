@@ -11,6 +11,11 @@ class WineSerializer(serializers.ModelSerializer):
         model = Wine
         fields = '__all__'
 
+    def update(self, instance, validated_data):
+        instance.visibility = 0
+        instance.save()
+        return instance
+
 
 class TransactionSerializer(serializers.ModelSerializer):
 
