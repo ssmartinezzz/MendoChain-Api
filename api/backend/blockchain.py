@@ -7,7 +7,7 @@ import os
 
 
 def first_transaction_example(private_key, my_address):
-   
+    algo_token_local = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     algo_address_local = "http://localhost:4001"
     algod_address = "https://testnet-api.algonode.cloud"
     algod_token = ""
@@ -23,7 +23,7 @@ def first_transaction_example(private_key, my_address):
     params.fee = 1000
     receiver = "HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA"
     amount = 0
-    #note = "Hello World".encode()
+    #note = data.encode()
 
     unsigned_txn = transaction.PaymentTxn(my_address, params, receiver, amount, None)
 
@@ -39,15 +39,8 @@ def first_transaction_example(private_key, my_address):
         confirmed_txn = transaction.wait_for_confirmation(algod_client, txid, 4)
     except Exception as err:
         print(err)
+        err = "Error"
+        return err
     #account_info = algod_client.account_info(my_address)
     return txid
 
-
-""" print("Transaction information: {}".format(json.dumps(confirmed_txn, indent=4)))
- print("Decoded note: {}".format(base64.b64decode(
-     confirmed_txn["txn"]["txn"]["note"]).decode()))
-
- print("Starting Account balance: {} microAlgos".format(account_info.get('amount')) )
- print("Amount transfered: {} microAlgos".format(amount) )
- print("Fee: {} microAlgos".format(params.fee) )"""
-# print("Final Account balance: {} microAlgos".format(account_info.get('amount')) + "\n")

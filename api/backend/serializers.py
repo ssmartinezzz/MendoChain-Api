@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import *
 from .blockchain import *
 import os
+import json
 
 
 
@@ -29,12 +30,16 @@ class TransactionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, validated_data):
-        return Transaction.objects.create(
-            quantity=validated_data['quantity'],
-            transaction_id=first_transaction_example(private_key=os.getenv("PRIVATE_KEY"), my_address=os.getenv("WALLET_ADD")),
-            wine=validated_data['wine'],
-            visibility=1,
-        )
+        data = first_transaction_example(private_key=os.getenv("PRIVATE_KEY"), my_address=os.getenv("WALLET_ADD"))
+        if data != "Error":
+            return Transaction.objects.create(
+                quantity=validated_data['quantity'],
+                transaction_id=data,
+                wine=validated_data['wine'],
+                visibility=1,
+            )
+        raise serializers.ValidationError("Error while transaction")
+
 
     def update(self, instance, validated_data):
         instance.visibility = 0
