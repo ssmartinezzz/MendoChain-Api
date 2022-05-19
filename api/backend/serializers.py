@@ -33,8 +33,18 @@ class TransactionSerializer(serializers.ModelSerializer):
             quantity=validated_data['quantity'],
             transaction_id=first_transaction_example(private_key=os.getenv("PRIVATE_KEY"), my_address=os.getenv("WALLET_ADD")),
             wine=validated_data['wine'],
-
+            visibility=1,
         )
+
+    def update(self, instance, validated_data):
+        instance.visibility = 0
+        instance.wine = validated_data.get("wine")
+        instance.quantity = validated_data.get("quantity")
+        instance.transaction_id = validated_data.get("transaction_id")
+        instance.save()
+        return instance
+
+
 
 
 
