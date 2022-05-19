@@ -13,6 +13,11 @@ class WineSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         instance.visibility = 0
+        instance.variety_name = validated_data.get("variety_name")
+        instance.content = validated_data.get("content")
+        instance.alcohol = validated_data.get("alcohol")
+        instance.lote = validated_data.get("lote")
+        instance.year = validated_data.get("year")
         instance.save()
         return instance
 
