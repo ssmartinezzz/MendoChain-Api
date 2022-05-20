@@ -4,12 +4,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated, BasePermission, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-
-
-
-
 
 @api_view(['GET'])
 def hello_world(request):
