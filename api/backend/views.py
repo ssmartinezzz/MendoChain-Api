@@ -4,7 +4,12 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated, BasePermission, SAFE_METHODS, IsAdminUser
 
+
+class ReadOnly(BasePermission):
+    def has_permission(self, request, view):
+        return request.method in SAFE_METHODS
 
 @api_view(['GET'])
 def hello_world(request):
@@ -12,15 +17,17 @@ def hello_world(request):
     return Response({"hello": f"Welcome to DRF, {name}!"}, 200)
 
 class WineList(generics.ListCreateAPIView):
+    permission_classes = [ReadOnly]
     queryset = Wine.objects.filter(visibility=1)
     serializer_class = WineSerializer
 
 class TransactionList(generics.ListCreateAPIView):
+    permission_classes = [ReadOnly]
     queryset = Transaction.objects.filter(visibility=1)
     serializer_class = TransactionSerializer
 
-
 class WineApiView(APIView):
+    permission_classes = [IsAuthenticated|ReadOnly]
 
     def get(self, request, pk):
         wine = Wine.objects.filter(id=pk).first()
@@ -45,6 +52,7 @@ class WineApiView(APIView):
         return Response({'message': "Wine not found"}, status=status.HTTP_404_NOT_FOUND)
 
 class TransactionApiView(APIView):
+    permission_classes = [IsAuthenticated|ReadOnly]
 
     def get(self, request, pk):
         transaction = Transaction.objects.filter(id=pk).first()
