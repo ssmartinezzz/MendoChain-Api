@@ -14,12 +14,12 @@ def hello_world(request):
     return Response({"hello": f"Welcome to DRF, {name}!"}, 200)
 
 class WineList(generics.ListCreateAPIView):
-    queryset = Wine.objects.filter(visibility=1)
+    queryset = Wine.objects.filter(visibility=1).order_by('id')
     serializer_class = WineSerializer
     pagination_class = PageNumberPagination
 
 class TransactionList(generics.ListCreateAPIView):
-    queryset = Transaction.objects.filter(visibility=1)
+    queryset = Transaction.objects.filter(visibility=1).order_by('id')
     serializer_class = TransactionSerializer
     pagination_class = PageNumberPagination
 
