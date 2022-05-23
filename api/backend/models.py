@@ -20,7 +20,7 @@ class Wine(models.Model):
 class Transaction(models.Model):
     quantity = models.IntegerField(null=False)
 
-    transaction_id = models.CharField(max_length=200, null=False)
+    transaction_id = models.CharField(max_length=200, null=True)
 
     wine = models.ForeignKey(Wine, on_delete=models.CASCADE, related_name='transactions')
 
