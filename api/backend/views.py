@@ -18,6 +18,12 @@ class WineList(generics.ListCreateAPIView):
     serializer_class = WineSerializer
     pagination_class = PageNumberPagination
 
+class AllWineList(generics.ListCreateAPIView):
+    queryset =  Wine.objects.filter(visibility=1)
+    serializer_class = WineSerializer
+    pagination_class = None
+
+
 class TransactionList(generics.ListCreateAPIView):
     queryset = Transaction.objects.filter(visibility=1).order_by('id')
     serializer_class = TransactionSerializer
