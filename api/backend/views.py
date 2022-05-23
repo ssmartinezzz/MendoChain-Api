@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.pagination import PageNumberPagination
 
 @api_view(['GET'])
 def hello_world(request):
@@ -13,12 +14,20 @@ def hello_world(request):
     return Response({"hello": f"Welcome to DRF, {name}!"}, 200)
 
 class WineList(generics.ListCreateAPIView):
-    queryset = Wine.objects.filter(visibility=1)
+    queryset = Wine.objects.filter(visibility=1).order_by('id')
     serializer_class = WineSerializer
+    pagination_class = PageNumberPagination
+
+class AllWineList(generics.ListCreateAPIView):
+    queryset =  Wine.objects.filter(visibility=1)
+    serializer_class = WineSerializer
+    pagination_class = None
+
 
 class TransactionList(generics.ListCreateAPIView):
-    queryset = Transaction.objects.filter(visibility=1)
+    queryset = Transaction.objects.filter(visibility=1).order_by('id')
     serializer_class = TransactionSerializer
+    pagination_class = PageNumberPagination
 
 class WineApiView(APIView):
     #authentication_classes = [SessionAuthentication, BasicAuthentication]
