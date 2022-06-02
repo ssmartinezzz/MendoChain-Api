@@ -6,7 +6,7 @@ from algosdk.future import transaction
 import os
 
 
-def first_transaction_example(private_key, my_address):
+def first_transaction_example(private_key, my_address, message):
     algo_token_local = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     algo_address_local = "http://localhost:4001"
     algod_address = "https://testnet-api.algonode.cloud"
@@ -23,9 +23,9 @@ def first_transaction_example(private_key, my_address):
     params.fee = 1000
     receiver = "HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA"
     amount = 0
-    #note = data.encode()
+    note = message.encode()
 
-    unsigned_txn = transaction.PaymentTxn(my_address, params, receiver, amount, None)
+    unsigned_txn = transaction.PaymentTxn(my_address, params, receiver, amount, None, note)
 
     # sign transaction
     signed_txn = unsigned_txn.sign(private_key)
