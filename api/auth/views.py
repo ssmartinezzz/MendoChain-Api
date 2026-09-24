@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import generics
+from .permissions import IsSelfOrAdmin
 from .serializers import UserSerializerWithToken, UserSerializerSafe
 
 
@@ -16,9 +17,15 @@ def current_user(request):
 class UserRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializerSafe
+    permission_classes = [permissions.IsAuthenticated, IsSelfOrAdmin]
 
 
 class UserCreateList(APIView):
+
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [permissions.IsAdminUser()]
+        return super().get_permissions()
 
     def post(self, request, format=None):
         serializer = UserSerializerWithToken(data=request.data)
