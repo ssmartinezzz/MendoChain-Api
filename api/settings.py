@@ -51,8 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'api.backend.apps.BackendConfig',
-    'api.auth.apps.AuthConfig',
+    'api.traceability.apps.TraceabilityConfig',
+    'api.accounts.apps.AccountsConfig',
 
 ]
 

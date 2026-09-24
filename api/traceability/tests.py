@@ -42,7 +42,7 @@ class WineWritePermissionsTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
-@mock.patch('api.backend.serializers.first_transaction_example', return_value='FAKE_TX_ID')
+@mock.patch('api.traceability.serializers.first_transaction_example', return_value='FAKE_TX_ID')
 class TransactionWritePermissionsTests(APITestCase):
     url = '/api/transaction'
 
@@ -142,7 +142,7 @@ class TransactionUpdateAndDeleteTests(APITestCase):
         self.client.delete(self.url)
         self.assertEqual(self.client.delete(self.url).status_code, status.HTTP_404_NOT_FOUND)
 
-    @mock.patch('api.backend.serializers.first_transaction_example', return_value='REAL_TX')
+    @mock.patch('api.traceability.serializers.first_transaction_example', return_value='REAL_TX')
     def test_clients_cannot_choose_transaction_id(self, send_to_blockchain):
         response = self.client.post('/api/transaction', {'quantity': 1, 'wine': self.wine.pk, 'transaction_id': 'FORGED'})
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -165,7 +165,7 @@ class TransactionBlockchainErrorTests(APITestCase):
         self.algod.suggested_params.return_value = SuggestedParams(
             fee=1000, first=1, last=1000, gh=base64.b64encode(b'\x00' * 32).decode(), flat_fee=True,
         )
-        patcher = mock.patch('api.backend.blockchain.algod.AlgodClient', return_value=self.algod)
+        patcher = mock.patch('api.traceability.blockchain.algod.AlgodClient', return_value=self.algod)
         patcher.start()
         self.addCleanup(patcher.stop)
 
@@ -179,7 +179,7 @@ class TransactionBlockchainErrorTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_502_BAD_GATEWAY)
         self.assertFalse(Transaction.objects.exists())
 
-    @mock.patch('api.backend.blockchain.transaction.wait_for_confirmation', side_effect=Exception('timeout'))
+    @mock.patch('api.traceability.blockchain.transaction.wait_for_confirmation', side_effect=Exception('timeout'))
     def test_unconfirmed_submitted_transaction_is_still_recorded(self, wait_for_confirmation):
         self.algod.send_transaction.return_value = 'SUBMITTED_TX'
         response = self.client.post(self.url, {'quantity': 1, 'wine': self.wine.pk})
