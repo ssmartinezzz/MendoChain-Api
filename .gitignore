@@ -1,6 +1,7 @@
 .env
 .idea/
 venv/
+.venv/
 db.sqlite3
 *.pyc
 
@@ -11,3 +12,5 @@ __pycache__/
 mendochain-network/crypto-config/
 *.key
 priv_sk
+staticfiles/
+.setup.log

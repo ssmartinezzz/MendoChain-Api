@@ -20,8 +20,11 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('auth/', include('api.auth.urls')),
-    path('api/', include('api.backend.urls'))
+    path('auth/', include('api.accounts.urls')),
+    path('api/', include('api.traceability.interfaces.urls'))
 ]
 
 
+
+handler404 = 'api.core.exceptions.not_found_view'
+handler500 = 'api.core.exceptions.server_error_view'

@@ -12,20 +12,22 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 import datetime
 from pathlib import Path
-import django_heroku
+import dj_database_url
+from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
-# Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY',default="Thisisakey")
+SECRET_KEY = os.getenv('SECRET_KEY')
+if not SECRET_KEY:
+    raise ImproperlyConfigured('The SECRET_KEY environment variable is required.')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'false').lower() in ('1', 'true', 'yes')
 
-ALLOWED_HOSTS = ['mendochain.herokuapp.com']
+ALLOWED_HOSTS = [host.strip() for host in os.getenv('ALLOWED_HOSTS', '').split(',') if host.strip()]
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Static files (CSS, JavaScript, Images)
@@ -33,13 +35,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = "/static/"
 
-ON_HEROKU = True
-HEROKU_SERVER = os.environ.get('HEROKU_SERVER')
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STORAGES = {
+    'default': {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
+    'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage'},
+}
 
 # Application definition
 
@@ -52,14 +51,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'api.backend.apps.BackendConfig',
-    'api.auth.apps.AuthConfig',
+    'api.traceability.apps.TraceabilityConfig',
+    'api.accounts.apps.AccountsConfig',
 
 ]
 
 MIDDLEWARE = [
+    'api.core.middleware.RequestIdMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -90,26 +91,25 @@ WSGI_APPLICATION = 'api.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-# if ON_HEROKU:
-#     DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.postgresql_psycopg2",
-#             "NAME": os.path.join(BASE_DIR, "db.sqlite3")
-#         }
-#     }
-# else:
-DATABASES = {
+# DATABASE_URL takes precedence; otherwise the individual DB_* variables are used.
+if os.getenv('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(
+            conn_max_age=600,
+            ssl_require=os.getenv('DATABASE_SSL_REQUIRE', 'true').lower() in ('1', 'true', 'yes'),
+        )
+    }
+else:
+    DATABASES = {
         'default': {
-            'ENGINE': "django.db.backends.postgresql_psycopg2",
-            'NAME': os.getenv("DB_NAME"),
-            'USER': os.getenv("DB_USER"),
-            'PASSWORD': os.getenv("DB_PASSWORD"),
-            'HOST': 'localhost',
-            'PORT': os.getenv("DB_PORT"),
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+            'HOST': os.getenv('DB_HOST', 'localhost'),
+            'PORT': os.getenv('DB_PORT'),
         }
     }
-
-
 
 
 # Password validation
@@ -142,21 +142,44 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
 
     ),
-    'DEFAULT_PAGINATION_CLASS': (
-            'rest_framework.pagination.PageNumberPagination',
-        ),
+    'DEFAULT_PAGINATION_CLASS': 'api.core.pagination.DefaultPagination',
     'PAGE_SIZE': 5,
+    'EXCEPTION_HANDLER': 'api.core.exceptions.exception_handler',
 }
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': datetime.timedelta(hours=1)
 }
 
-CORS_ORIGIN_WHITELIST = (
+CORS_EXPOSE_HEADERS = ('X-Request-ID',)
+
+CORS_ALLOWED_ORIGINS = (
     'http://localhost:3000',
     'http://127.0.0.1:3000',
     'https://mendochainweb.herokuapp.com'
 )
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {'format': '%(asctime)s %(levelname)s %(name)s %(message)s'},
+    },
+    'handlers': {
+        'console': {'class': 'logging.StreamHandler', 'formatter': 'simple'},
+    },
+    'loggers': {
+        'api': {'handlers': ['console'], 'level': os.getenv('LOG_LEVEL', 'INFO'), 'propagate': False},
+    },
+}
+
+# Ledger where supply-chain movements are recorded.
+LEDGER_GATEWAY = 'api.traceability.infrastructure.algorand.build_algorand_ledger'
+ALGOD_ADDRESS = os.getenv('ALGOD_ADDRESS', 'https://testnet-api.algonode.cloud')
+ALGOD_TOKEN = os.getenv('ALGOD_TOKEN', '')
+ALGORAND_SENDER = os.getenv('WALLET_ADD')
+ALGORAND_PRIVATE_KEY = os.getenv('PRIVATE_KEY')
+ALGORAND_RECEIVER = os.getenv('ALGORAND_RECEIVER', 'HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA')
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -167,11 +190,11 @@ TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
 
-django_heroku.settings(locals())
+# Keeps the existing integer primary keys; switching to BigAutoField needs a migration.
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
