@@ -1,4 +1,4 @@
-from api.core.errors import NotFoundError, UnavailableError
+from api.core.errors import ConflictError, NotFoundError, UnavailableError
 
 
 class WineNotFound(NotFoundError):
@@ -15,3 +15,8 @@ class LedgerUnavailable(UnavailableError):
     def __init__(self, reason):
         super().__init__('ledger_unavailable', 'The movement could not be recorded on the ledger.')
         self.reason = reason
+
+
+class ActorAlreadyRegistered(ConflictError):
+    def __init__(self, user_id):
+        super().__init__('actor_already_registered', f'User {user_id} is already a supply-chain actor.')
