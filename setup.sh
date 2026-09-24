@@ -6,16 +6,21 @@
 #   run      setup, then start the development server
 #   test     setup, then run the test suite
 #   db-stop  stop the PostgreSQL container
-set -euo pipefail
+set -Eeuo pipefail
 
 cd "$(dirname "$0")"
 
 DB_CONTAINER="mendochain-db"
 DB_VOLUME="mendochain-db-data"
 DB_IMAGE="postgres:16-alpine"
+LOG_FILE=".setup.log"
 
 info() { printf '\033[1;34m==>\033[0m %s\n' "$*"; }
 fail() { printf '\033[1;31merror:\033[0m %s\n' "$*" >&2; exit 1; }
+
+on_unexpected_error() {
+    printf '\033[1;31merror:\033[0m setup failed at line %s (exit code %s). Full output in %s\n' "$1" "$2" "$LOG_FILE" >&2
+}
 
 # --- .env -------------------------------------------------------------------
 
@@ -67,6 +72,44 @@ port_in_use() {
     (exec 3<>"/dev/tcp/127.0.0.1/$1") 2>/dev/null
 }
 
+next_free_port() {
+    local port
+    for port in $(seq $(($1 + 1)) $(($1 + 50))); do
+        if ! port_in_use "$port"; then
+            printf '%s' "$port"
+            return
+        fi
+    done
+}
+
+port_conflict() {
+    local port="$1" suggestion
+    suggestion="$(next_free_port "$port")"
+    suggestion="${suggestion:-<free port>}"
+    if docker inspect "$DB_CONTAINER" >/dev/null 2>&1; then
+        # The existing container is bound to this port, so moving it also means recreating it.
+        fail "Port $port is taken by another process, but container '$DB_CONTAINER' needs it. Stop that process and run ./setup.sh again, or move the database: set DB_PORT=$suggestion in .env, run docker rm -f $DB_CONTAINER (data is kept in volume $DB_VOLUME), then ./setup.sh again."
+    fi
+    fail "Port $port is already in use by another process. Set DB_PORT=$suggestion in .env and run ./setup.sh again."
+}
+
+container_port() {
+    docker inspect -f '{{with index .HostConfig.PortBindings "5432/tcp"}}{{(index . 0).HostPort}}{{end}}' "$DB_CONTAINER"
+}
+
+docker_or_port_conflict() {
+    # Runs a docker command; a port clash becomes a clear message instead of a raw docker error.
+    local port="$1" output
+    shift
+    if ! output="$("$@" 2>&1)"; then
+        echo "$output" >> "$LOG_FILE"
+        if grep -qiE 'port is already allocated|address already in use' <<<"$output"; then
+            port_conflict "$port"
+        fi
+        fail "Docker could not start PostgreSQL: $output"
+    fi
+}
+
 start_database() {
     if [[ -n "$(read_env DATABASE_URL)" ]]; then
         info "DATABASE_URL is set; skipping the local PostgreSQL container"
@@ -82,33 +125,57 @@ start_database() {
 
     command -v docker >/dev/null || fail "Docker is required for the local database. Install it or set DATABASE_URL in .env."
 
+    if docker inspect "$DB_CONTAINER" >/dev/null 2>&1; then
+        local bound
+        bound="$(container_port)"
+        if [[ "$bound" != "$port" ]]; then
+            fail "Container '$DB_CONTAINER' listens on port $bound but .env has DB_PORT=$port. Set DB_PORT=$bound in .env, or recreate the container on the new port with: docker rm -f $DB_CONTAINER (data is kept in volume $DB_VOLUME)."
+        fi
+    fi
+
     if [[ "$(docker inspect -f '{{.State.Running}}' "$DB_CONTAINER" 2>/dev/null || true)" == "true" ]]; then
-        info "PostgreSQL container '$DB_CONTAINER' already running"
+        if [[ -z "$(docker port "$DB_CONTAINER" 5432/tcp 2>/dev/null)" ]]; then
+            # Docker can bring a container up without its port mapping after a failed start; only recreating fixes it.
+            info "Container '$DB_CONTAINER' is running without its port mapping; recreating it (data is kept in volume $DB_VOLUME)"
+            docker rm -f "$DB_CONTAINER" >/dev/null
+            create_container "$port"
+        else
+            info "PostgreSQL container '$DB_CONTAINER' already running on port $port"
+        fi
     elif docker inspect "$DB_CONTAINER" >/dev/null 2>&1; then
-        info "Starting PostgreSQL container '$DB_CONTAINER'"
-        docker start "$DB_CONTAINER" >/dev/null
+        # Check before starting: a start that fails on a busy port can leave the container without its mapping.
+        if port_in_use "$port"; then
+            port_conflict "$port"
+        fi
+        info "Starting PostgreSQL container '$DB_CONTAINER' on port $port"
+        docker_or_port_conflict "$port" docker start "$DB_CONTAINER"
     else
         if port_in_use "$port"; then
-            fail "Port $port is already in use. Set another DB_PORT in .env (e.g. DB_PORT=5433) and run again."
+            port_conflict "$port"
         fi
-        info "Creating PostgreSQL container '$DB_CONTAINER' on port $port"
-        docker run -d --name "$DB_CONTAINER" \
-            -e POSTGRES_DB="$(read_env DB_NAME)" \
-            -e POSTGRES_USER="$(read_env DB_USER)" \
-            -e POSTGRES_PASSWORD="$(read_env DB_PASSWORD)" \
-            -p "$port:5432" \
-            -v "$DB_VOLUME:/var/lib/postgresql/data" \
-            "$DB_IMAGE" >/dev/null
+        create_container "$port"
     fi
 
     info "Waiting for PostgreSQL"
     for _ in $(seq 1 30); do
-        if docker exec "$DB_CONTAINER" pg_isready -q -U "$(read_env DB_USER)"; then
+        if docker exec "$DB_CONTAINER" pg_isready -q -U "$(read_env DB_USER)" && port_in_use "$port"; then
             return
         fi
         sleep 1
     done
-    fail "PostgreSQL did not become ready in 30 seconds. Check: docker logs $DB_CONTAINER"
+    fail "PostgreSQL is not reachable on localhost:$port after 30 seconds. Check: docker logs $DB_CONTAINER, or recreate it with docker rm -f $DB_CONTAINER (data is kept in volume $DB_VOLUME)."
+}
+
+create_container() {
+    local port="$1"
+    info "Creating PostgreSQL container '$DB_CONTAINER' on port $port"
+    docker_or_port_conflict "$port" docker run -d --name "$DB_CONTAINER" \
+        -e POSTGRES_DB="$(read_env DB_NAME)" \
+        -e POSTGRES_USER="$(read_env DB_USER)" \
+        -e POSTGRES_PASSWORD="$(read_env DB_PASSWORD)" \
+        -p "$port:5432" \
+        -v "$DB_VOLUME:/var/lib/postgresql/data" \
+        "$DB_IMAGE"
 }
 
 # --- Commands ---------------------------------------------------------------
@@ -126,16 +193,27 @@ setup() {
     info "Ready. Start the server with: ./setup.sh run"
 }
 
+run_setup() {
+    # Setup output goes to the terminal and to $LOG_FILE; the server and tests only to the terminal.
+    exec 3>&1 4>&2
+    : > "$LOG_FILE"
+    exec > >(tee -a "$LOG_FILE") 2>&1
+    trap 'on_unexpected_error $LINENO $?' ERR
+    setup
+    trap - ERR
+    exec 1>&3 2>&4 3>&- 4>&-
+}
+
 case "${1:-setup}" in
     setup)
-        setup
+        run_setup
         ;;
     run)
-        setup
+        run_setup
         uv run python manage.py runserver
         ;;
     test)
-        setup
+        run_setup
         LOG_LEVEL=WARNING uv run python manage.py test
         ;;
     db-stop)

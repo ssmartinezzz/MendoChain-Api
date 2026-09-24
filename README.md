@@ -23,6 +23,8 @@ Requires [uv](https://docs.astral.sh/uv/) and Docker (for the local PostgreSQL).
 
 The script only fills missing values in `.env` (a random `SECRET_KEY`, `DEBUG=true` and local database settings); existing values are kept. If `DATABASE_URL` is set or `DB_HOST` is not local, it skips the PostgreSQL container.
 
+Setup output is also written to `.setup.log`. If the database port is busy, the script stops and suggests a free `DB_PORT`; if the container runs without its port mapping, it is recreated on the same volume, so data is kept.
+
 Dependencies are managed with uv: add one with `uv add <package>`, and upgrade within the allowed ranges with `uv lock --upgrade`. For platforms that need a `requirements.txt`, generate it with `uv export --no-hashes --no-dev > requirements.txt`.
 
 ### Configuration

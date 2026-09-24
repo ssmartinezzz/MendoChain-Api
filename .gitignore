@@ -13,3 +13,4 @@ mendochain-network/crypto-config/
 *.key
 priv_sk
 staticfiles/
+.setup.log
