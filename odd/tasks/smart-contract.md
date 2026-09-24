@@ -25,12 +25,12 @@ Today each movement is a zero-amount payment from one server wallet with free te
 
 ## TDD
 - Mode: strict (source: global user configuration)
-- Contract runner: `uv run pytest contracts`
+- Contract runner: `uv run --group contracts pytest contracts` (LocalNet tests skip unless `uvx algokit localnet start` is running)
 - API runner: `./setup.sh test`
 
 ## Tasks
 - [x] C1 Contract: roles, lots, balances, transfers, retirement, events; unit tests; compiles to TEAL + ARC-56 spec.
-- [ ] C2 Deployment: script to create and fund the app on LocalNet/TestNet; app id in settings.
+- [x] C2 Deployment: `contracts/deploy.py` creates the app from the ARC-56 spec and funds its account; verified on LocalNet. (Settings/management command for TestNet move to C4, with the adapter.)
 - [ ] C3 Custodial actor accounts: encrypted keys, role registration on chain, funding.
 - [ ] C4 Domain and ledger port: wine total and producer, movements with sender and recipient; `LedgerGateway` operations; Algorand contract adapter; fake ledger.
 - [ ] C5 API: endpoints and serializers for lots, transfers and actors.
@@ -43,6 +43,7 @@ Today each movement is a zero-amount payment from one server wallet with free te
 
 ## Progress
 - C1: RED 16/17 (stub interface), GREEN 17/17. Compiled with `uv run --group contracts puyapy contract.py --out-dir build --output-arc56` (run in `contracts/traceability`). `.native` on ARC-4 ints is deprecated: use `.as_uint64()`. `algorand-python-testing` 1.1.0 fails to emit a single-field struct event, so `LotRetired` also carries the producer. Unit tests emulate the contract in Python; box references and MBR are only exercised on LocalNet (C2/C7).
+- C2: RED (missing `contracts.deploy`), GREEN 19/19 including 2 LocalNet tests: the compiled TEAL enforces `insufficient balance` on a real AVM, box references are populated automatically by algokit-utils, and the app account is funded.
 
 ## Next step
-C2.
+C3.
