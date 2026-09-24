@@ -145,6 +145,7 @@ REST_FRAMEWORK = {
             'rest_framework.pagination.PageNumberPagination',
         ),
     'PAGE_SIZE': 5,
+    'EXCEPTION_HANDLER': 'api.core.exceptions.exception_handler',
 }
 
 SIMPLE_JWT = {

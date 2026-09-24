@@ -25,3 +25,6 @@ urlpatterns = [
 ]
 
 
+
+handler404 = 'api.core.exceptions.not_found_view'
+handler500 = 'api.core.exceptions.server_error_view'
