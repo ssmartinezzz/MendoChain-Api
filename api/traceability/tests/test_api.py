@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from .models import Transaction, Wine
+from api.traceability.models import Transaction, Wine
 
 WINE_PAYLOAD = {
     'variety_name': 'Malbec',

@@ -175,6 +175,14 @@ LOGGING = {
     },
 }
 
+# Ledger where supply-chain movements are recorded.
+LEDGER_GATEWAY = 'api.traceability.infrastructure.algorand.build_algorand_ledger'
+ALGOD_ADDRESS = os.getenv('ALGOD_ADDRESS', 'https://testnet-api.algonode.cloud')
+ALGOD_TOKEN = os.getenv('ALGOD_TOKEN', '')
+ALGORAND_SENDER = os.getenv('WALLET_ADD')
+ALGORAND_PRIVATE_KEY = os.getenv('PRIVATE_KEY')
+ALGORAND_RECEIVER = os.getenv('ALGORAND_RECEIVER', 'HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA')
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
