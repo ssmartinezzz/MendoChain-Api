@@ -12,15 +12,18 @@ Built with Django REST Framework, JWT authentication and the Algorand Python SDK
 
 ## Getting started
 
-Requires Python 3.12 and PostgreSQL.
+Requires [uv](https://docs.astral.sh/uv/) and Docker (for the local PostgreSQL).
 
 ```bash
-python3.12 -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env   # fill in your own values
-python manage.py migrate
-python manage.py runserver
+./setup.sh        # create .env, start PostgreSQL, install Python 3.12 + dependencies, migrate
+./setup.sh run    # same, then start the development server on http://127.0.0.1:8000
+./setup.sh test   # same, then run the test suite
+./setup.sh db-stop
 ```
+
+The script only fills missing values in `.env` (a random `SECRET_KEY`, `DEBUG=true` and local database settings); existing values are kept. If `DATABASE_URL` is set or `DB_HOST` is not local, it skips the PostgreSQL container.
+
+Dependencies are managed with uv: add one with `uv add <package>`, and upgrade within the allowed ranges with `uv lock --upgrade`. For platforms that need a `requirements.txt`, generate it with `uv export --no-hashes --no-dev > requirements.txt`.
 
 ### Configuration
 
@@ -40,7 +43,9 @@ python manage.py runserver
 ### Tests
 
 ```bash
-SECRET_KEY=test LOG_LEVEL=WARNING DB_NAME=... DB_USER=... DB_PASSWORD=... python manage.py test
+./setup.sh test
+# or, against an existing database:
+SECRET_KEY=test LOG_LEVEL=WARNING DB_NAME=... DB_USER=... DB_PASSWORD=... uv run python manage.py test
 ```
 
 Tests replace the ledger with an in-memory fake (`LEDGER_GATEWAY`), so they never reach the network.
