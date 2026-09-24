@@ -13,19 +13,21 @@ import os
 import datetime
 from pathlib import Path
 import django_heroku
+from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
-# Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY',default="Thisisakey")
+SECRET_KEY = os.getenv('SECRET_KEY')
+if not SECRET_KEY:
+    raise ImproperlyConfigured('The SECRET_KEY environment variable is required.')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'false').lower() in ('1', 'true', 'yes')
 
-ALLOWED_HOSTS = ['mendochain.herokuapp.com']
+ALLOWED_HOSTS = [host.strip() for host in os.getenv('ALLOWED_HOSTS', '').split(',') if host.strip()]
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Static files (CSS, JavaScript, Images)
@@ -171,7 +173,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-django_heroku.settings(locals())
+# allowed_hosts=False: django_heroku would otherwise replace ALLOWED_HOSTS with ['*'].
+django_heroku.settings(locals(), allowed_hosts=False)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
