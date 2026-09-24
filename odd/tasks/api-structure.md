@@ -38,8 +38,8 @@ api/
 - [x] S1 Move `api/backend` -> `api/traceability` (label `backend`) and `api/auth` -> `api/accounts`; suite green, no migrations.
 - [x] S2 `core/exceptions.py`: one error envelope for DRF errors, 404 and domain errors.
 - [x] S3 `core/middleware.py`: `X-Request-ID` (accept safe incoming ids, otherwise generate), request log line with status and latency; header exposed through CORS.
-- [ ] S4 `LedgerGateway` port + `AlgorandLedger` adapter configured from settings; `LEDGER_GATEWAY` setting selects it.
-- [ ] S5 Service layer and selectors; input/output serializers; thin views; remove dead code and POST on `allwine`.
+- [x] S4 `LedgerGateway` port + `AlgorandLedger` adapter configured from settings; `LEDGER_GATEWAY` setting selects it.
+- [x] S5 Service layer and selectors; input/output serializers; thin views; remove dead code and POST on `allwine`.
 
 ## Acceptance criteria
 - Full suite green; `check` clean; `makemigrations --check` no changes.
@@ -50,5 +50,9 @@ api/
 - S2: RED 7/7, GREEN. `api/core/errors.py` (DomainError, NotFoundError, UnavailableError) + `api/core/exceptions.py` handler; `handler404`/`handler500` return JSON. 46/46 OK.
 - S3: RED 7/7, GREEN. `RequestIdMiddleware` first in the chain; `CORS_EXPOSE_HEADERS`; `LOGGING` for `api` loggers with `LOG_LEVEL`. Test runner now uses `LOG_LEVEL=WARNING`. 51/51 OK.
 
+- S4: RED (import), GREEN 6/6. `AlgorandLedger` no longer queries the account balance before each payment (one network call less). 57/57 OK.
+- S5: RED 7 failures + 1 import error, GREEN. Services/selectors tested with an injected `FakeLedger`; interface tests use `LEDGER_GATEWAY` override. `blockchain.py` and the old views/serializers/urls removed. New input rules: `quantity >= 1`; unknown wine rejected before touching the ledger; `/api/allwine` read-only. Default pagination class fixed (was a tuple). 72/72 OK.
+- Smoke test under gunicorn: success payloads unchanged, error envelope, `X-Request-ID` propagation and request log lines observed.
+
 ## Next step
-S4.
+Update `Mendochain-Web`: DELETE for soft deletes and read errors from the new envelope.

@@ -33,6 +33,8 @@ python manage.py runserver
 | `DATABASE_SSL_REQUIRE` | no | Require SSL for `DATABASE_URL` connections. Defaults to `true`. |
 | `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT` | without `DATABASE_URL` | PostgreSQL connection. `DB_HOST` defaults to `localhost`. |
 | `PRIVATE_KEY`, `WALLET_ADD` | for transactions | Algorand account used to sign traceability transactions. |
+| `ALGOD_ADDRESS`, `ALGOD_TOKEN` | no | Algorand node. Defaults to the public TestNet node. |
+| `ALGORAND_RECEIVER` | no | Address that receives the zero-amount traceability payments. |
 | `LOG_LEVEL` | no | Level for the `api` loggers. Defaults to `INFO`. |
 
 ### Tests
@@ -41,7 +43,22 @@ python manage.py runserver
 SECRET_KEY=test LOG_LEVEL=WARNING DB_NAME=... DB_USER=... DB_PASSWORD=... python manage.py test
 ```
 
-The Algorand calls are mocked, so tests never reach the network.
+Tests replace the ledger with an in-memory fake (`LEDGER_GATEWAY`), so they never reach the network.
+
+## Project layout
+
+```
+api/
+  core/            error envelope, request id middleware, pagination
+  accounts/        users and JWT
+  traceability/
+    domain/        domain errors and the LedgerGateway port
+    application/   use cases (services) and read queries (selectors)
+    infrastructure/ Algorand adapter
+    interfaces/    input/output serializers, views, urls
+```
+
+Errors always use `{"error": {"code", "message", "details"}}`, and every response carries an `X-Request-ID` header.
 
 ### Hyperledger Fabric network (optional)
 

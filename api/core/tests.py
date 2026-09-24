@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.http import Http404
 from django.test import SimpleTestCase
 from rest_framework import status
 from rest_framework.test import APIRequestFactory, APITestCase
@@ -19,6 +20,13 @@ class RaisesUnavailable(APIView):
 
     def get(self, request):
         raise UnavailableError('ledger_unavailable', 'The ledger could not be reached.')
+
+
+class RaisesHttp404(APIView):
+    permission_classes = []
+
+    def get(self, request):
+        raise Http404
 
 
 class ErrorEnvelopeForDomainErrorsTests(SimpleTestCase):
@@ -42,11 +50,11 @@ class ErrorEnvelopeForFrameworkErrorsTests(APITestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='user@test.com', password='pass12345!')
 
-    def test_missing_resource(self):
-        response = self.client.get('/api/wine/9999')
+    def test_framework_404_uses_generic_code(self):
+        response = RaisesHttp404.as_view()(APIRequestFactory().get('/'))
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-        self.assertEqual(response.json()['error']['code'], 'not_found')
-        self.assertIsNone(response.json()['error']['details'])
+        self.assertEqual(response.data['error']['code'], 'not_found')
+        self.assertIsNone(response.data['error']['details'])
 
     def test_validation_error_lists_fields_in_details(self):
         self.client.force_authenticate(self.user)

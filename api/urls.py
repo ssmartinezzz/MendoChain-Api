@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/', include('api.accounts.urls')),
-    path('api/', include('api.traceability.urls'))
+    path('api/', include('api.traceability.interfaces.urls'))
 ]
 
 

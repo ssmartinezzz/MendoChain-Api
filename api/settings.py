@@ -142,9 +142,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
 
     ),
-    'DEFAULT_PAGINATION_CLASS': (
-            'rest_framework.pagination.PageNumberPagination',
-        ),
+    'DEFAULT_PAGINATION_CLASS': 'api.core.pagination.DefaultPagination',
     'PAGE_SIZE': 5,
     'EXCEPTION_HANDLER': 'api.core.exceptions.exception_handler',
 }
