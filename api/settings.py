@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 import datetime
 from pathlib import Path
-import django_heroku
+import dj_database_url
 from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -35,13 +35,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = "/static/"
 
-ON_HEROKU = True
-HEROKU_SERVER = os.environ.get('HEROKU_SERVER')
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STORAGES = {
+    'default': {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
+    'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage'},
+}
 
 # Application definition
 
@@ -62,6 +59,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -92,26 +90,25 @@ WSGI_APPLICATION = 'api.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-# if ON_HEROKU:
-#     DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.postgresql_psycopg2",
-#             "NAME": os.path.join(BASE_DIR, "db.sqlite3")
-#         }
-#     }
-# else:
-DATABASES = {
+# DATABASE_URL takes precedence; otherwise the individual DB_* variables are used.
+if os.getenv('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(
+            conn_max_age=600,
+            ssl_require=os.getenv('DATABASE_SSL_REQUIRE', 'true').lower() in ('1', 'true', 'yes'),
+        )
+    }
+else:
+    DATABASES = {
         'default': {
-            'ENGINE': "django.db.backends.postgresql_psycopg2",
-            'NAME': os.getenv("DB_NAME"),
-            'USER': os.getenv("DB_USER"),
-            'PASSWORD': os.getenv("DB_PASSWORD"),
-            'HOST': 'localhost',
-            'PORT': os.getenv("DB_PORT"),
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+            'HOST': os.getenv('DB_HOST', 'localhost'),
+            'PORT': os.getenv('DB_PORT'),
         }
     }
-
-
 
 
 # Password validation
@@ -154,7 +151,7 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': datetime.timedelta(hours=1)
 }
 
-CORS_ORIGIN_WHITELIST = (
+CORS_ALLOWED_ORIGINS = (
     'http://localhost:3000',
     'http://127.0.0.1:3000',
     'https://mendochainweb.herokuapp.com'
@@ -169,12 +166,11 @@ TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
 
-# allowed_hosts=False: django_heroku would otherwise replace ALLOWED_HOSTS with ['*'].
-django_heroku.settings(locals(), allowed_hosts=False)
+# Keeps the existing integer primary keys; switching to BigAutoField needs a migration.
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
