@@ -33,11 +33,12 @@ python manage.py runserver
 | `DATABASE_SSL_REQUIRE` | no | Require SSL for `DATABASE_URL` connections. Defaults to `true`. |
 | `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT` | without `DATABASE_URL` | PostgreSQL connection. `DB_HOST` defaults to `localhost`. |
 | `PRIVATE_KEY`, `WALLET_ADD` | for transactions | Algorand account used to sign traceability transactions. |
+| `LOG_LEVEL` | no | Level for the `api` loggers. Defaults to `INFO`. |
 
 ### Tests
 
 ```bash
-SECRET_KEY=test DB_NAME=... DB_USER=... DB_PASSWORD=... python manage.py test
+SECRET_KEY=test LOG_LEVEL=WARNING DB_NAME=... DB_USER=... DB_PASSWORD=... python manage.py test
 ```
 
 The Algorand calls are mocked, so tests never reach the network.

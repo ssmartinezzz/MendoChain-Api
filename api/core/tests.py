@@ -72,3 +72,35 @@ class ErrorEnvelopeForFrameworkErrorsTests(APITestCase):
         response = self.client.get('/does-not-exist')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(response.json()['error']['code'], 'not_found')
+
+
+class RequestIdMiddlewareTests(SimpleTestCase):
+    url = '/api/hello_world'
+
+    def test_generates_request_id_when_missing(self):
+        response = self.client.get(self.url)
+        self.assertRegex(response['X-Request-ID'], r'^[0-9a-f]{32}$')
+
+    def test_propagates_safe_incoming_request_id(self):
+        response = self.client.get(self.url, HTTP_X_REQUEST_ID='frontend-abc.123')
+        self.assertEqual(response['X-Request-ID'], 'frontend-abc.123')
+
+    def test_replaces_unsafe_incoming_request_id(self):
+        for unsafe in ('evil value; injected', 'x' * 129, ''):
+            with self.subTest(unsafe=unsafe):
+                response = self.client.get(self.url, HTTP_X_REQUEST_ID=unsafe)
+                self.assertRegex(response['X-Request-ID'], r'^[0-9a-f]{32}$')
+
+    def test_logs_one_line_per_request(self):
+        with self.assertLogs('api.request', level='INFO') as logs:
+            response = self.client.get(self.url, HTTP_X_REQUEST_ID='trace-1')
+        self.assertEqual(len(logs.output), 1)
+        line = logs.output[0]
+        self.assertIn('GET /api/hello_world 200', line)
+        self.assertIn('request_id=trace-1', line)
+        self.assertRegex(line, r'duration_ms=\d+')
+        self.assertEqual(response.status_code, 200)
+
+    def test_request_id_is_exposed_to_allowed_origins(self):
+        response = self.client.get(self.url, HTTP_ORIGIN='http://localhost:3000')
+        self.assertIn('x-request-id', response['Access-Control-Expose-Headers'].lower())
