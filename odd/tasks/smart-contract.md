@@ -1,0 +1,48 @@
+# Traceability smart contract
+
+## Objective
+Replace note-only notarization with an Algorand smart contract that enforces supply-chain rules on chain: who may register lots, who holds how many bottles, and who may move them.
+
+## Problem
+Today each movement is a zero-amount payment from one server wallet with free text in the note. Nothing is validated on chain: quantities are unchecked, anyone can send notes to the receiver, records cannot be verified automatically, and a single server key signs everything.
+
+## Decisions
+- User (2026-09-24): level 2, a contract with rules.
+- User (2026-09-24): custodial accounts. The backend creates one Algorand account per actor and stores its key encrypted; each movement is signed by its actor. Keeps the path open to self-custody wallets (level 3).
+- Contract written in Algorand Python (ARC-4), compiled with `puyapy`, unit-tested with `algorand-python-testing`.
+- Lots are fungible bottle balances per actor stored in boxes; history is emitted as ARC-28 events.
+- Roles: winery (1), distributor (2), retailer (3). The admin (server account that creates the app) registers actors.
+- The app account is funded by the admin to cover box minimum balance (`2500 + 400 * (key + value bytes)` microAlgos per box).
+- Existing wines and movements stay as read-only legacy records (note-based).
+
+## Contract rules
+| Method | Caller | Rule |
+|--------|--------|------|
+| `register_actor(account, role)` | admin | role in {1, 2, 3} |
+| `register_lot(lot, total)` | winery | lot is new, total > 0; caller receives the total |
+| `transfer(lot, to, quantity)` | holder | lot active, 0 < quantity <= caller balance, `to` is a registered actor |
+| `retire_lot(lot)` | producing winery | lot becomes inactive |
+
+## TDD
+- Mode: strict (source: global user configuration)
+- Contract runner: `uv run pytest contracts`
+- API runner: `./setup.sh test`
+
+## Tasks
+- [x] C1 Contract: roles, lots, balances, transfers, retirement, events; unit tests; compiles to TEAL + ARC-56 spec.
+- [ ] C2 Deployment: script to create and fund the app on LocalNet/TestNet; app id in settings.
+- [ ] C3 Custodial actor accounts: encrypted keys, role registration on chain, funding.
+- [ ] C4 Domain and ledger port: wine total and producer, movements with sender and recipient; `LedgerGateway` operations; Algorand contract adapter; fake ledger.
+- [ ] C5 API: endpoints and serializers for lots, transfers and actors.
+- [ ] C6 Frontend: total bottles on wine creation, recipient on movements.
+- [ ] C7 End-to-end check on LocalNet.
+
+## Acceptance criteria
+- Every rule above is rejected on chain when violated (unit tests) and surfaced by the API as a clear error.
+- Full suites green; contract compiles.
+
+## Progress
+- C1: RED 16/17 (stub interface), GREEN 17/17. Compiled with `uv run --group contracts puyapy contract.py --out-dir build --output-arc56` (run in `contracts/traceability`). `.native` on ARC-4 ints is deprecated: use `.as_uint64()`. `algorand-python-testing` 1.1.0 fails to emit a single-field struct event, so `LotRetired` also carries the producer. Unit tests emulate the contract in Python; box references and MBR are only exercised on LocalNet (C2/C7).
+
+## Next step
+C2.

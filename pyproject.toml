@@ -19,3 +19,11 @@ dependencies = [
 
 [tool.uv]
 package = false
+
+[dependency-groups]
+contracts = [
+    "algorand-python~=4.0.0",
+    "algorand-python-testing~=1.1.0",
+    "puyapy~=5.10.1",
+    "pytest~=8.4",
+]
