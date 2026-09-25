@@ -6,11 +6,17 @@ so a ledger failure leaves nothing behind. Movements mirror immutable ledger ent
 retired from listings but never edited.
 """
 from algosdk import account as algorand_account
+from django.contrib.auth import get_user_model
 from django.db import transaction as db_transaction
+from django.utils import timezone
 
 from api.traceability.domain.errors import (
     ActorAlreadyRegistered,
+    ActorAlreadyRevoked,
+    ActorNotFound,
+    ActorRevoked,
     LegacyWine,
+    MemberAlreadyExists,
     NotAnActor,
     NotTheProducer,
     TransactionNotFound,
@@ -99,10 +105,13 @@ def retire_movement(movement_id):
 
 
 def _actor_of(user):
-    try:
-        return user.actor
-    except Actor.DoesNotExist:
-        raise NotAnActor(user.pk) from None
+    """Active actor of `user`, read fresh so a revocation is never missed through a cached relation."""
+    actor = Actor.objects.filter(user=user).first()
+    if actor is None:
+        raise NotAnActor(user.pk)
+    if actor.revoked_at is not None:
+        raise ActorRevoked(actor.pk)
+    return actor
 
 
 def _active_wine(wine_id):
@@ -110,3 +119,30 @@ def _active_wine(wine_id):
     if wine is None:
         raise WineNotFound(wine_id)
     return wine
+
+
+def onboard_member(*, email, password, first_name, last_name, role, ledger, vault):
+    """Create the user and its on-chain actor together: a ledger failure leaves no user behind."""
+    User = get_user_model()
+    if User.objects.filter(username__iexact=email).exists():
+        raise MemberAlreadyExists(email)
+
+    with db_transaction.atomic():
+        user = User.objects.create_user(
+            username=email, email=email, password=password, first_name=first_name, last_name=last_name,
+        )
+        return register_actor(user=user, role=role, ledger=ledger, vault=vault)
+
+
+def revoke_actor(actor_id, *, ledger):
+    """Remove the actor's role on chain, then mark it revoked so it can no longer operate."""
+    actor = Actor.objects.filter(pk=actor_id).first()
+    if actor is None:
+        raise ActorNotFound(actor_id)
+    if actor.revoked_at is not None:
+        raise ActorAlreadyRevoked(actor_id)
+
+    ledger.revoke_actor(actor.address)
+    actor.revoked_at = timezone.now()
+    actor.save(update_fields=['revoked_at'])
+    return actor

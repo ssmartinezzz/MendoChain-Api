@@ -289,3 +289,97 @@ class ActorsTests(ChainAPITestCase):
 
     def test_anonymous_cannot_list_actors(self):
         self.assertEqual(self.client.get(self.url).status_code, status.HTTP_401_UNAUTHORIZED)
+
+
+class AdminMembersTests(ChainAPITestCase):
+    url = '/api/admin/members'
+    member = {
+        'email': 'bodega@test.com', 'password': 'Andes-2026-secure', 'first_name': 'Bodega',
+        'last_name': 'Andes', 'role': Role.WINERY,
+    }
+
+    def setUp(self):
+        super().setUp()
+        self.admin = self.user('admin@test.com', is_staff=True)
+        self.client.force_authenticate(self.admin)
+
+    def test_onboards_a_member_with_its_on_chain_actor(self):
+        response = self.client.post(self.url, self.member)
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        user = User.objects.get(username='bodega@test.com')
+        self.assertEqual(response.data, {
+            'id': user.pk, 'email': 'bodega@test.com', 'name': 'Bodega Andes', 'is_staff': False,
+            'actor': {'id': user.actor.pk, 'role': 'winery', 'address': user.actor.address, 'revoked': False},
+        })
+        self.assertEqual(FAKE_LEDGER.actors, [(user.actor.address, Role.WINERY)])
+
+    def test_lists_every_user_with_its_actor(self):
+        self.client.post(self.url, self.member)
+        response = self.client.get(self.url)
+        self.assertEqual([(m['email'], m['actor'] and m['actor']['role']) for m in response.data],
+                         [('admin@test.com', None), ('bodega@test.com', 'winery')])
+
+    def test_rejects_weak_passwords_and_bad_input(self):
+        for overrides in ({'password': '123'}, {'email': 'not-an-email'}, {'role': 9}):
+            with self.subTest(overrides=overrides):
+                response = self.client.post(self.url, {**self.member, **overrides})
+                self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(FAKE_LEDGER.actors, [])
+
+    def test_duplicate_emails_return_409(self):
+        self.client.post(self.url, self.member)
+        response = self.client.post(self.url, {**self.member, 'email': 'BODEGA@test.com'})
+        self.assertEqual(response.status_code, status.HTTP_409_CONFLICT)
+        self.assertEqual(response.json()['error']['code'], 'member_already_exists')
+
+    def test_ledger_failure_returns_502_and_creates_no_user(self):
+        FAKE_LEDGER.error = LedgerUnavailable('node down')
+        self.assertEqual(self.client.post(self.url, self.member).status_code, status.HTTP_502_BAD_GATEWAY)
+        self.assertFalse(User.objects.filter(username='bodega@test.com').exists())
+
+    def test_only_admins_use_the_panel(self):
+        self.client.force_authenticate(self.user('user@test.com'))
+        self.assertEqual(self.client.get(self.url).status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(self.client.post(self.url, self.member).status_code, status.HTTP_403_FORBIDDEN)
+
+
+class RevokeActorAPITests(ChainAPITestCase):
+
+    def setUp(self):
+        super().setUp()
+        self.winery = self.user('winery@test.com', Role.WINERY)
+        self.distributor = self.user('dist@test.com', Role.DISTRIBUTOR)
+        self.url = f'/api/actors/{self.distributor.actor.pk}'
+        self.client.force_authenticate(self.user('admin@test.com', is_staff=True))
+
+    def test_admins_revoke_actors_on_chain(self):
+        self.assertEqual(self.client.delete(self.url).status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(FAKE_LEDGER.revoked_actors, [self.distributor.actor.address])
+        self.assertEqual([a['name'] for a in self.client.get('/api/actors').data], [f'Actor {self.winery.actor.pk}'])
+
+    def test_revoking_twice_or_unknown_actors(self):
+        self.client.delete(self.url)
+        self.assertEqual(self.client.delete(self.url).status_code, status.HTTP_409_CONFLICT)
+        self.assertEqual(self.client.delete('/api/actors/9999').status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_only_admins_revoke(self):
+        self.client.force_authenticate(self.winery)
+        self.assertEqual(self.client.delete(self.url).status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(FAKE_LEDGER.revoked_actors, [])
+
+    def test_revoked_actors_cannot_receive_bottles(self):
+        wine = self.on_chain_wine(self.winery)
+        self.client.delete(self.url)
+        self.client.force_authenticate(self.winery)
+        response = self.client.post('/api/transaction', {'wine': wine.pk, 'quantity': 1, 'recipient': self.distributor.actor.pk})
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn('recipient', response.json()['error']['details'])
+        self.assertEqual(FAKE_LEDGER.transfers, [])
+
+    def test_revoked_actors_get_403_when_acting(self):
+        self.client.delete(f'/api/actors/{self.winery.actor.pk}')
+        self.client.force_authenticate(self.winery)
+        response = self.client.post('/api/wine', NEW_WINE)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.json()['error']['code'], 'actor_revoked')

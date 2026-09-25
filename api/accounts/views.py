@@ -22,10 +22,8 @@ class UserRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 
 class UserCreateList(APIView):
 
-    def get_permissions(self):
-        if self.request.method == 'GET':
-            return [permissions.IsAdminUser()]
-        return super().get_permissions()
+    # Accounts are created by admins only (members are onboarded from the admin panel).
+    permission_classes = [permissions.IsAdminUser]
 
     def post(self, request, format=None):
         serializer = UserSerializerWithToken(data=request.data)

@@ -9,6 +9,8 @@ from api.traceability.infrastructure.ledger import get_ledger
 from api.traceability.interfaces.serializers import (
     ActorInputSerializer,
     ActorOutputSerializer,
+    MemberInputSerializer,
+    MemberOutputSerializer,
     MovementInputSerializer,
     MovementOutputSerializer,
     WineCreateInputSerializer,
@@ -105,6 +107,30 @@ class ActorCollection(generics.ListAPIView):
         data = _validated(ActorInputSerializer, request)
         actor = services.register_actor(user=data['user'], role=data['role'], ledger=get_ledger(), vault=get_key_vault())
         return Response(ActorOutputSerializer(actor).data, status=status.HTTP_201_CREATED)
+
+
+class ActorDetail(generics.GenericAPIView):
+    permission_classes = [permissions.IsAdminUser]
+
+    def delete(self, request, pk):
+        services.revoke_actor(pk, ledger=get_ledger())
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class AdminMembers(generics.ListAPIView):
+    """Admin panel: every user with its actor, and onboarding of new members."""
+
+    serializer_class = MemberOutputSerializer
+    permission_classes = [permissions.IsAdminUser]
+    pagination_class = None
+
+    def get_queryset(self):
+        return selectors.members()
+
+    def post(self, request):
+        data = _validated(MemberInputSerializer, request)
+        actor = services.onboard_member(**data, ledger=get_ledger(), vault=get_key_vault())
+        return Response(MemberOutputSerializer(actor.user).data, status=status.HTTP_201_CREATED)
 
 
 def _validated(serializer_class, request):

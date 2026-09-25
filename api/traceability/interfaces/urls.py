@@ -11,4 +11,6 @@ urlpatterns = [
     path('transaction', views.MovementCollection.as_view(), name='transaction_api'),
     path('transaction/<int:pk>', views.MovementDetail.as_view(), name='transaction_block'),
     path('actors', views.ActorCollection.as_view(), name='actors'),
+    path('actors/<int:pk>', views.ActorDetail.as_view(), name='actor_detail'),
+    path('admin/members', views.AdminMembers.as_view(), name='admin_members'),
 ]

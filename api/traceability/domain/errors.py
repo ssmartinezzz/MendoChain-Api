@@ -48,3 +48,23 @@ class LedgerRuleViolation(ConflictError):
     def __init__(self, rule):
         super().__init__(rule.replace(' ', '_'), f'Rejected by the traceability contract: {rule}.')
         self.rule = rule
+
+
+class ActorNotFound(NotFoundError):
+    def __init__(self, actor_id):
+        super().__init__('actor_not_found', f'Actor {actor_id} does not exist.')
+
+
+class ActorRevoked(ForbiddenError):
+    def __init__(self, actor_id):
+        super().__init__('actor_revoked', f'Actor {actor_id} was revoked and can no longer operate.')
+
+
+class ActorAlreadyRevoked(ConflictError):
+    def __init__(self, actor_id):
+        super().__init__('actor_already_revoked', f'Actor {actor_id} is already revoked.')
+
+
+class MemberAlreadyExists(ConflictError):
+    def __init__(self, email):
+        super().__init__('member_already_exists', f'An account with {email} already exists.')

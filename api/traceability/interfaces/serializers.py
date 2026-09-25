@@ -1,5 +1,6 @@
 """Input and output DTOs. Input serializers only validate; output serializers only render."""
 from django.contrib.auth import get_user_model
+from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 
 from api.traceability.domain.roles import Role
@@ -32,7 +33,7 @@ class WineOutputSerializer(serializers.ModelSerializer):
 
 class MovementInputSerializer(serializers.Serializer):
     wine = serializers.PrimaryKeyRelatedField(queryset=Wine.objects.all())
-    recipient = serializers.PrimaryKeyRelatedField(queryset=Actor.objects.all())
+    recipient = serializers.PrimaryKeyRelatedField(queryset=Actor.objects.filter(revoked_at__isnull=True))
     quantity = serializers.IntegerField(min_value=1)
 
 
@@ -64,3 +65,45 @@ class ActorOutputSerializer(serializers.ModelSerializer):
 
     def get_role(self, actor):
         return Role(actor.role).name.lower()
+
+
+class MemberInputSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField(write_only=True)
+    first_name = serializers.CharField(max_length=150)
+    last_name = serializers.CharField(max_length=150, required=False, allow_blank=True, default='')
+    role = serializers.ChoiceField(choices=[role.value for role in Role])
+
+    def validate_password(self, value):
+        validate_password(value)
+        return value
+
+
+class MemberOutputSerializer(serializers.ModelSerializer):
+    """Admin view of a user and its supply-chain actor, if any. Never exposes keys."""
+
+    email = serializers.SerializerMethodField()
+    name = serializers.SerializerMethodField()
+    actor = serializers.SerializerMethodField()
+
+    class Meta:
+        model = get_user_model()
+        fields = ('id', 'email', 'name', 'is_staff', 'actor')
+        read_only_fields = fields
+
+    def get_email(self, user):
+        return user.email or user.username
+
+    def get_name(self, user):
+        return user.get_full_name()
+
+    def get_actor(self, user):
+        actor = getattr(user, 'actor', None)
+        if actor is None:
+            return None
+        return {
+            'id': actor.pk,
+            'role': Role(actor.role).name.lower(),
+            'address': actor.address,
+            'revoked': actor.revoked_at is not None,
+        }
