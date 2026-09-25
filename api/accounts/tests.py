@@ -67,3 +67,34 @@ class UserDetailPermissionsTests(APITestCase):
         self.client.force_authenticate(self.admin)
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+
+class UserCreationTests(APITestCase):
+    url = '/auth/users'
+    payload = {'username': 'new@test.com', 'password': 'pass12345!'}
+
+    def test_only_admins_create_users(self):
+        self.client.force_authenticate(User.objects.create_user(username='user@test.com', password='pass12345!'))
+        self.assertEqual(self.client.post(self.url, self.payload).status_code, status.HTTP_403_FORBIDDEN)
+        self.assertFalse(User.objects.filter(username='new@test.com').exists())
+
+    def test_admins_create_users(self):
+        self.client.force_authenticate(User.objects.create_user(username='admin@test.com', password='x', is_staff=True))
+        self.assertEqual(self.client.post(self.url, self.payload).status_code, status.HTTP_201_CREATED)
+
+
+class CurrentUserTests(APITestCase):
+
+    def test_tells_whether_the_user_is_an_admin(self):
+        self.client.force_authenticate(User.objects.create_user(username='admin@test.com', password='x', is_staff=True))
+        self.assertTrue(self.client.get('/auth/current_user').data['is_staff'])
+
+
+class PrivilegeEscalationTests(APITestCase):
+
+    def test_users_cannot_make_themselves_admins(self):
+        user = User.objects.create_user(username='user@test.com', password='pass12345!')
+        self.client.force_authenticate(user)
+        self.client.patch(f'/auth/users/{user.pk}', {'is_staff': True})
+        user.refresh_from_db()
+        self.assertFalse(user.is_staff)

@@ -21,7 +21,7 @@ Let the admin onboard supply-chain participants from a panel and revoke their ro
 - [x] R1 Contract: `revoke_actor` (admin only, registered accounts); revoked or unregistered accounts cannot send.
 - [x] R2 Ledger port, fake and Algorand adapter: `revoke_actor`; LocalNet test.
 - [x] R3 Domain: `Actor.revoked_at`; `onboard_member` and `revoke_actor` services; revoked actors excluded from recipients and rejected early.
-- [ ] R4 API: admin-only user creation; `is_staff` in current user; `GET/POST /api/admin/members`; `DELETE /api/actors/<id>` revokes.
+- [x] R4 API: admin-only user creation; `is_staff` in current user; `GET/POST /api/admin/members`; `DELETE /api/actors/<id>` revokes.
 - [ ] R5 Web: admin panel (members, onboarding form, revoke) visible to admins only.
 - [ ] R6 End-to-end on LocalNet.
 
@@ -29,6 +29,7 @@ Let the admin onboard supply-chain participants from a panel and revoke their ro
 - R1: RED 7, GREEN 24/24; recompiled. `transfer` now asserts a registered sender (`unknown sender`).
 - R2: RED 2 (LocalNet), GREEN; admin-signed `revoke_actor` in the adapter. 105/105.
 - R3: RED 9 (stubs), GREEN 114/114. `revoked_at` (migration 0008); `onboard_member` creates user + actor atomically; `revoke_actor` revokes on chain before marking; `_actor_of` reads the actor fresh from the database so a cached relation cannot hide a revocation.
+- R4: RED 15, GREEN 129/129. `POST /auth/users` admin-only; `is_staff` exposed read-only (a privilege-escalation guard test passes before and after, as the field was absent); `/api/admin/members` (list + onboarding with Django password validators); `DELETE /api/actors/<id>` revokes; revoked recipients rejected by input validation.
 
 ## Next step
-R4.
+R5.

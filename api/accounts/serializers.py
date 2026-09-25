@@ -29,4 +29,6 @@ class UserSerializerSafe(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email')
+        fields = ('username', 'first_name', 'last_name', 'email', 'is_staff')
+        # Users edit their own profile through this serializer: they must never grant themselves admin rights.
+        read_only_fields = ('is_staff',)
