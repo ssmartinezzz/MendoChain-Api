@@ -1,4 +1,6 @@
 """Read-side queries. Retired records stay readable by id so history keeps resolving them."""
+from django.contrib.auth import get_user_model
+
 from api.traceability.domain.errors import TransactionNotFound, WineNotFound
 from api.traceability.models import Actor, Transaction, Wine
 
@@ -26,4 +28,10 @@ def movement_by_id(movement_id):
 
 
 def actors():
-    return Actor.objects.select_related('user').order_by('id')
+    """Active actors: the possible recipients of a transfer."""
+    return Actor.objects.filter(revoked_at__isnull=True).select_related('user').order_by('id')
+
+
+def members():
+    """Every user with its actor, if any, for the admin panel."""
+    return get_user_model().objects.select_related('actor').order_by('id')

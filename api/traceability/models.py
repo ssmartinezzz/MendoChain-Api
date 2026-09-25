@@ -47,3 +47,5 @@ class Actor(models.Model):
     address = models.CharField(max_length=58, unique=True)
     encrypted_private_key = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    # Set when the admin revokes the role on chain; revoked actors cannot operate.
+    revoked_at = models.DateTimeField(null=True, blank=True)
