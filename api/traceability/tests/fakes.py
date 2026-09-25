@@ -5,18 +5,11 @@ class FakeLedger:
         self.reset()
 
     def reset(self):
-        self.notes = []
         self.actors = []
         self.lots = []
         self.transfers = []
         self.retired = []
         self.error = None
-
-    def record(self, note):
-        if self.error:
-            raise self.error
-        self.notes.append(note)
-        return f'FAKE_TX_{len(self.notes)}'
 
     def register_actor(self, address, role):
         if self.error:
