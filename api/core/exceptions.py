@@ -3,11 +3,12 @@ from rest_framework import exceptions, status
 from rest_framework.response import Response
 from rest_framework.views import exception_handler as drf_exception_handler
 
-from .errors import ConflictError, DomainError, NotFoundError, UnavailableError
+from .errors import ConflictError, DomainError, ForbiddenError, NotFoundError, UnavailableError
 
 DOMAIN_ERROR_STATUS = (
     (NotFoundError, status.HTTP_404_NOT_FOUND),
     (ConflictError, status.HTTP_409_CONFLICT),
+    (ForbiddenError, status.HTTP_403_FORBIDDEN),
     (UnavailableError, status.HTTP_502_BAD_GATEWAY),
 )
 

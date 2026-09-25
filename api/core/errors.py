@@ -17,3 +17,7 @@ class UnavailableError(DomainError):
 
 class ConflictError(DomainError):
     """The operation clashes with the current state, e.g. something already exists."""
+
+
+class ForbiddenError(DomainError):
+    """The caller is not allowed to perform the operation."""

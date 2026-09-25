@@ -16,6 +16,11 @@ class Wine(models.Model):
 
     visibility = models.BooleanField(default=1)
 
+    # Null for legacy wines registered before the traceability contract.
+    total_quantity = models.PositiveIntegerField(null=True, blank=True)
+
+    producer = models.ForeignKey('Actor', null=True, blank=True, on_delete=models.PROTECT, related_name='wines')
+
 
 class Transaction(models.Model):
     quantity = models.IntegerField(null=False)
@@ -25,6 +30,11 @@ class Transaction(models.Model):
     wine = models.ForeignKey(Wine, on_delete=models.CASCADE, related_name='transactions')
 
     visibility = models.BooleanField(default=1)
+
+    # Null for legacy movements recorded as payment notes.
+    sender = models.ForeignKey('Actor', null=True, blank=True, on_delete=models.PROTECT, related_name='sent')
+
+    recipient = models.ForeignKey('Actor', null=True, blank=True, on_delete=models.PROTECT, related_name='received')
 
 
 

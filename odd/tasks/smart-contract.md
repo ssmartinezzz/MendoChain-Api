@@ -33,7 +33,7 @@ Today each movement is a zero-amount payment from one server wallet with free te
 - [x] C2 Deployment: `contracts/deploy.py` creates the app from the ARC-56 spec and funds its account; verified on LocalNet. (Settings/management command for TestNet move to C4, with the adapter.)
 - [x] C3 Custodial actor accounts: encrypted keys, role registration on chain, funding.
 - [ ] C4 Domain and ledger port: wine total and producer, movements with sender and recipient; `LedgerGateway` operations; Algorand contract adapter; fake ledger.
-- [ ] C5 API: endpoints and serializers for lots, transfers and actors.
+- [x] C5 API: endpoints and serializers for lots, transfers and actors.
 - [ ] C6 Frontend: total bottles on wine creation, recipient on movements.
 - [ ] C7 End-to-end check on LocalNet.
 
@@ -47,6 +47,8 @@ Today each movement is a zero-amount payment from one server wallet with free te
 - C3: RED 9 (stubs: plaintext vault, NotImplemented service, conflict unmapped), GREEN 82/82. `Actor` model (migration 0006), `KeyVault` (Fernet, `ACTOR_KEYS_SECRET`), `register_actor` registers on the ledger before storing, `ConflictError` -> 409. `setup.sh` generates `ACTOR_KEYS_SECRET`.
 - Pending: `.env.example` needs `ACTOR_KEYS_SECRET` and the app id (blocked by permission rules when the working directory is the repo).
 - Note: running `./setup.sh test` in the real repo created a local `.env` from the template and stopped on the busy port 5432; use the runner with `DB_HOST=localhost DB_PORT=55432` instead.
+- C4a (domain/services/port, fake ledger): RED 16/17, GREEN 17/17. Wine gets `total_quantity` and `producer`, movements get `sender`/`recipient` (migration 0007, nullable for legacy rows). `register_wine` and `retire_wine` call the ledger inside the DB transaction; `transfer_bottles` stores the movement only after the ledger accepts it. New errors: `ForbiddenError` (403: not_an_actor, winery_only, producer_only), `LegacyWine` and `LedgerRuleViolation` (409, code from the contract rule).
+- C5 (API): RED 24/33, GREEN. Create/update input DTOs split (lot size fixed on chain), `recipient` on movements, `/api/actors` (list for signed-in users without email or keys, register for admins). Full suite 99/99.
 
 ## Next step
-C4.
+C4b: Algorand contract adapter (replaces the note adapter), settings and deploy command, LocalNet tests.

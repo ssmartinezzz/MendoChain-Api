@@ -10,4 +10,5 @@ urlpatterns = [
     path('allwine', views.AllWines.as_view(), name='all_wine'),
     path('transaction', views.MovementCollection.as_view(), name='transaction_api'),
     path('transaction/<int:pk>', views.MovementDetail.as_view(), name='transaction_block'),
+    path('actors', views.ActorCollection.as_view(), name='actors'),
 ]
