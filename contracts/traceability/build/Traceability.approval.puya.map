@@ -3,7 +3,7 @@
   "sources": [
     "../contract.py"
   ],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;AAiDA;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;;;;;;;;;AAAA;;;;;;;;;AAOK;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;;AAAA;AAAA;AAAA;AAAA;AAEU;;AAAc;;AAAd;AAAP;AACO;AAAA;AAAA;;AAAA;;;AAA+B;;AAAoB;;AAApB;AAA/B;;;;AAAP;AACA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AACU;AAAV;;;;;;AAAA;AAAA;AAAA;AALH;AAAA;;;;;AAOA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAEU;;;AAFV;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAIA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAE2B;;AACjB;AAAA;;;AAAwB;AAAxB;AAAP;AACkB;AAAX;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAP;AACO;;AAAA;AAAP;AAAA;AAEiB;;AAAA;;AAAA;AAAyB;;;AAAzB;AAAjB;;AAAA;AAAA;AA5BG;;AAAA;;AAAA;AA6BH;AAAA;;AAAA;AAAA;;AAAA;AAAA;AACU;AAAA;AAAV;;;;;;AAAA;AAAA;AAAA;AATH;AAAA;AAWA;;;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAEyB;;AACR;AAAP;;AAAA;AAAA;AAAA;AAAA;;AAAP;AACO;AAAA;AAAA;;;AAAA;AAAA;;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAP;AACO;AAAA;AAAA;AAAA;;AAAP;AAAA;AACO;;AAAA;;AAAA;AAAP;AACO;;AAAA;;;AAAP;AAvCG;;AAAA;AAAA;AAAA;;AA0CI;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAsC;AAAtC;AAAA;;AAAA;AACA;AAAA;;AAAA;AAAP;AAEY;AAAA;AAAA;AACpB;;;;AAEY;;AAhDD;;AAAA;;AAAA;AAAA;;AAAA;AAqD4B;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAyC;AAAzC;AAAA;;AAAA;AAAA;;AAAA;AAA/B;AAAA;AACU;AAAA;AAAA;AAAV;;;;;;AAAA;AAAA;AAAA;AAtBH;AAAA;AAkBO;AAAA;;;;AAMP;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAEiB;AAAP;;AAAA;AAAA;AAAA;AAAA;;AAAP;AACO;AAAA;AAAA;AACA;AAAA;;;AAA8B;;AAA9B;AAAP;AACA;;;AAAA;AAAA;AAAA;;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;;AAAA;;AAAA;AAE0B;;;AAAhB;AAAV;;;;;;AAAA;AAAA;AAAA;AAPH;AAAA;AASA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAjEM;AAmEI;AAAA;AAAA;AAAA;AAAA;AAAA;AAAqD;AAArD;AAAA;;AAAA;AAFV;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAIA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAEiB;AAAP;AAAA;AAAA;AAAA;AAAA;;AAAP;AACO;AAAA;AAHV;AAAA;AAAA;AAAA;AAAA;AAAA;AAKD;;;AACW;AAAA;;AAAA;AAAA;AAAgC;;;AAAhC;;AAAA;AAAA;AAAP",
+  "mappings": ";;;;;;;;;;;;;;;;;;;;AAsDA;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;;;;;;;;;;;AAAA;;;;;;;;;AAOK;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;;AAAA;AAAA;AAAA;AAAA;AAEU;;AAAc;;AAAd;AAAP;AACO;AAAA;AAAA;;AAAA;;;AAA+B;;AAAoB;;AAApB;AAA/B;;;;AAAP;AACA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AACU;AAAV;;;;;;AAAA;AAAA;AAAA;AALH;AAAA;;;;;AAOA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAGU;;AAAc;;AAAd;AAAP;AACkB;AAAX;;AAAA;AAAA;AAAA;AAAA;;AAAP;AACO;AAAA;AAAA;AAAA;AACP;;AACU;AAAV;;;;;;AAAA;AAAA;AAAA;AAPH;AAAA;AASA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAEU;;;AAFV;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAIA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAE2B;;AACjB;AAAA;;;AAAwB;AAAxB;AAAP;AACkB;AAAX;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAP;AACO;;AAAA;AAAP;AAAA;AAEiB;;AAAA;;AAAA;AAAyB;;;AAAzB;AAAjB;;AAAA;AAAA;AArCG;;AAAA;;AAAA;AAsCH;AAAA;;AAAA;AAAA;;AAAA;AAAA;AACU;AAAA;AAAV;;;;;;AAAA;AAAA;AAAA;AATH;AAAA;AAWA;;;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAEyB;;AACR;AAAP;;AAAA;AAAA;AAAA;AAAA;;AAAP;AACO;AAAA;AAAA;;;AAAA;AAAA;;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAP;AACO;AAAA;;;AAAP;AACO;AAAA;AAAA;AAAA;;AAAP;AAAA;AACO;;AAAA;;AAAA;AAAP;AACO;;AAAA;;;AAAP;AAjDG;;AAAA;AAAA;AAAA;;AAoDI;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAsC;AAAtC;AAAA;;AAAA;AACA;AAAA;;AAAA;AAAP;AAEY;AAAA;AAAA;AACpB;;;;AAEY;;AA1DD;;AAAA;;AAAA;AAAA;;AAAA;AA+D4B;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAyC;AAAzC;AAAA;;AAAA;AAAA;;AAAA;AAA/B;AAAA;AACU;AAAA;AAAA;AAAV;;;;;;AAAA;AAAA;AAAA;AAvBH;AAAA;AAmBO;AAAA;;;;AAMP;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAEiB;AAAP;;AAAA;AAAA;AAAA;AAAA;;AAAP;AACO;AAAA;AAAA;AACA;AAAA;;;AAA8B;;AAA9B;AAAP;AACA;;;AAAA;AAAA;AAAA;;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;;AAAA;;AAAA;AAE0B;;;AAAhB;AAAV;;;;;;AAAA;AAAA;AAAA;AAPH;AAAA;AASA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AA3EM;AA6EI;AAAA;AAAA;AAAA;AAAA;AAAA;AAAqD;AAArD;AAAA;;AAAA;AAFV;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAIA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAEiB;AAAP;AAAA;AAAA;AAAA;AAAA;;AAAP;AACO;AAAA;AAHV;AAAA;AAAA;AAAA;AAAA;AAAA;AAKD;;;AACW;AAAA;;AAAA;AAAA;AAAgC;;;AAAhC;;AAAA;AAAA;AAAP",
   "op_pc_offset": 0,
   "pc_events": {
     "1": {
@@ -14,7 +14,7 @@
       "op": "intcblock 1 0 8 32"
     },
     "7": {
-      "op": "bytecblock 0x6c 0x62 0x151f7c75 0x61"
+      "op": "bytecblock 0x6c 0x62 0x61 0x151f7c75"
     },
     "20": {
       "op": "txn NumAppArgs",
@@ -26,7 +26,7 @@
       ]
     },
     "22": {
-      "op": "bz main___algopy_default_create@16",
+      "op": "bz main___algopy_default_create@17",
       "stack_out": []
     },
     "25": {
@@ -65,18 +65,20 @@
       "stack_out": []
     },
     "32": {
-      "op": "pushbytess 0xc8855261 0x5d33c3a2 0xdd1ae270 0x075d6ad2 0x3e0b50dd 0x4780d80d 0xa02083df // method \"register_actor(address,uint8)void\", method \"role_of(address)uint64\", method \"register_lot(uint64,uint64)void\", method \"transfer(uint64,address,uint64)void\", method \"retire_lot(uint64)void\", method \"balance_of(uint64,address)uint64\", method \"lot_info(uint64)(address,uint64,bool)\"",
+      "op": "pushbytess 0xc8855261 0x2ac6cb14 0x5d33c3a2 0xdd1ae270 0x075d6ad2 0x3e0b50dd 0x4780d80d 0xa02083df // method \"register_actor(address,uint8)void\", method \"revoke_actor(address)void\", method \"role_of(address)uint64\", method \"register_lot(uint64,uint64)void\", method \"transfer(uint64,address,uint64)void\", method \"retire_lot(uint64)void\", method \"balance_of(uint64,address)uint64\", method \"lot_info(uint64)(address,uint64,bool)\"",
       "defined_out": [
         "Method(balance_of(uint64,address)uint64)",
         "Method(lot_info(uint64)(address,uint64,bool))",
         "Method(register_actor(address,uint8)void)",
         "Method(register_lot(uint64,uint64)void)",
         "Method(retire_lot(uint64)void)",
+        "Method(revoke_actor(address)void)",
         "Method(role_of(address)uint64)",
         "Method(transfer(uint64,address,uint64)void)"
       ],
       "stack_out": [
         "Method(register_actor(address,uint8)void)",
+        "Method(revoke_actor(address)void)",
         "Method(role_of(address)uint64)",
         "Method(register_lot(uint64,uint64)void)",
         "Method(transfer(uint64,address,uint64)void)",
@@ -85,7 +87,7 @@
         "Method(lot_info(uint64)(address,uint64,bool))"
       ]
     },
-    "69": {
+    "74": {
       "op": "txna ApplicationArgs 0",
       "defined_out": [
         "Method(balance_of(uint64,address)uint64)",
@@ -93,12 +95,14 @@
         "Method(register_actor(address,uint8)void)",
         "Method(register_lot(uint64,uint64)void)",
         "Method(retire_lot(uint64)void)",
+        "Method(revoke_actor(address)void)",
         "Method(role_of(address)uint64)",
         "Method(transfer(uint64,address,uint64)void)",
         "tmp%6#0"
       ],
       "stack_out": [
         "Method(register_actor(address,uint8)void)",
+        "Method(revoke_actor(address)void)",
         "Method(role_of(address)uint64)",
         "Method(register_lot(uint64,uint64)void)",
         "Method(transfer(uint64,address,uint64)void)",
@@ -108,15 +112,15 @@
         "tmp%6#0"
       ]
     },
-    "72": {
-      "op": "match register_actor role_of register_lot transfer retire_lot balance_of lot_info",
+    "77": {
+      "op": "match register_actor revoke_actor role_of register_lot transfer retire_lot balance_of lot_info",
       "stack_out": []
     },
-    "88": {
+    "95": {
       "op": "err"
     },
-    "89": {
-      "block": "main___algopy_default_create@16",
+    "96": {
+      "block": "main___algopy_default_create@17",
       "stack_in": [],
       "op": "txn OnCompletion",
       "defined_out": [
@@ -126,7 +130,7 @@
         "tmp%7#0"
       ]
     },
-    "91": {
+    "98": {
       "op": "!",
       "defined_out": [
         "tmp%8#0"
@@ -135,7 +139,7 @@
         "tmp%8#0"
       ]
     },
-    "92": {
+    "99": {
       "op": "txn ApplicationID",
       "defined_out": [
         "tmp%8#0",
@@ -146,7 +150,7 @@
         "tmp%9#0"
       ]
     },
-    "94": {
+    "101": {
       "op": "!",
       "defined_out": [
         "tmp%10#0",
@@ -157,7 +161,7 @@
         "tmp%10#0"
       ]
     },
-    "95": {
+    "102": {
       "op": "&&",
       "defined_out": [
         "tmp%11#0"
@@ -166,19 +170,19 @@
         "tmp%11#0"
       ]
     },
-    "96": {
+    "103": {
       "op": "return",
       "defined_out": [],
       "stack_out": []
     },
-    "97": {
+    "104": {
       "subroutine": "contracts.traceability.contract.Traceability.register_actor[routing]",
       "params": {},
       "block": "register_actor",
       "stack_in": [],
       "op": "txna ApplicationArgs 1"
     },
-    "100": {
+    "107": {
       "op": "dup",
       "defined_out": [
         "account#0"
@@ -188,7 +192,7 @@
         "account#0"
       ]
     },
-    "101": {
+    "108": {
       "op": "len",
       "defined_out": [
         "account#0",
@@ -199,7 +203,7 @@
         "len%0#0"
       ]
     },
-    "102": {
+    "109": {
       "op": "intc_3 // 32",
       "defined_out": [
         "32",
@@ -212,7 +216,7 @@
         "32"
       ]
     },
-    "103": {
+    "110": {
       "op": "==",
       "defined_out": [
         "account#0",
@@ -223,17 +227,17 @@
         "eq%0#0"
       ]
     },
-    "104": {
+    "111": {
       "error": "invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
       "op": "assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
       "stack_out": [
         "account#0"
       ]
     },
-    "105": {
+    "112": {
       "op": "txna ApplicationArgs 2"
     },
-    "108": {
+    "115": {
       "op": "dupn 2",
       "defined_out": [
         "account#0",
@@ -247,7 +251,7 @@
         "role#0 (copy)"
       ]
     },
-    "110": {
+    "117": {
       "op": "len",
       "defined_out": [
         "account#0",
@@ -261,7 +265,7 @@
         "len%1#0"
       ]
     },
-    "111": {
+    "118": {
       "op": "intc_0 // 1",
       "defined_out": [
         "1",
@@ -277,7 +281,7 @@
         "1"
       ]
     },
-    "112": {
+    "119": {
       "op": "==",
       "defined_out": [
         "account#0",
@@ -291,7 +295,7 @@
         "eq%1#0"
       ]
     },
-    "113": {
+    "120": {
       "error": "invalid number of bytes for arc4.uint8",
       "op": "assert // invalid number of bytes for arc4.uint8",
       "stack_out": [
@@ -300,7 +304,7 @@
         "role#0"
       ]
     },
-    "114": {
+    "121": {
       "op": "txn Sender",
       "defined_out": [
         "account#0",
@@ -314,7 +318,7 @@
         "tmp%0#1"
       ]
     },
-    "116": {
+    "123": {
       "op": "global CreatorAddress",
       "defined_out": [
         "account#0",
@@ -330,7 +334,7 @@
         "tmp%1#1"
       ]
     },
-    "118": {
+    "125": {
       "op": "==",
       "defined_out": [
         "account#0",
@@ -344,7 +348,7 @@
         "tmp%2#0"
       ]
     },
-    "119": {
+    "126": {
       "error": "admin only",
       "op": "assert // admin only",
       "stack_out": [
@@ -353,7 +357,7 @@
         "role#0"
       ]
     },
-    "120": {
+    "127": {
       "op": "btoi",
       "defined_out": [
         "account#0",
@@ -366,7 +370,7 @@
         "tmp%3#0"
       ]
     },
-    "121": {
+    "128": {
       "op": "dup",
       "stack_out": [
         "account#0",
@@ -375,7 +379,7 @@
         "tmp%3#0"
       ]
     },
-    "122": {
+    "129": {
       "op": "cover 3",
       "defined_out": [
         "account#0",
@@ -389,7 +393,7 @@
         "tmp%3#0"
       ]
     },
-    "124": {
+    "131": {
       "op": "bz register_actor_bool_false@4",
       "stack_out": [
         "tmp%3#0",
@@ -397,7 +401,7 @@
         "role#0"
       ]
     },
-    "127": {
+    "134": {
       "op": "dig 2",
       "stack_out": [
         "tmp%3#0",
@@ -406,7 +410,7 @@
         "tmp%3#0"
       ]
     },
-    "129": {
+    "136": {
       "op": "pushint 3",
       "stack_out": [
         "tmp%3#0",
@@ -416,7 +420,7 @@
         "3"
       ]
     },
-    "131": {
+    "138": {
       "op": "<=",
       "defined_out": [
         "account#0",
@@ -431,7 +435,7 @@
         "tmp%6#0"
       ]
     },
-    "132": {
+    "139": {
       "op": "bz register_actor_bool_false@4",
       "stack_out": [
         "tmp%3#0",
@@ -439,7 +443,7 @@
         "role#0"
       ]
     },
-    "135": {
+    "142": {
       "op": "intc_0 // 1",
       "defined_out": [
         "account#0",
@@ -454,7 +458,7 @@
         "and_result%0#0"
       ]
     },
-    "136": {
+    "143": {
       "error": "unknown role",
       "block": "register_actor_bool_merge@5",
       "stack_in": [
@@ -471,8 +475,8 @@
         "role#0"
       ]
     },
-    "137": {
-      "op": "bytec_3 // 0x61",
+    "144": {
+      "op": "bytec_2 // 0x61",
       "defined_out": [
         "0x61"
       ],
@@ -483,7 +487,7 @@
         "0x61"
       ]
     },
-    "138": {
+    "145": {
       "op": "uncover 2",
       "defined_out": [
         "0x61",
@@ -496,7 +500,7 @@
         "account#0"
       ]
     },
-    "140": {
+    "147": {
       "op": "dup",
       "defined_out": [
         "0x61",
@@ -510,7 +514,7 @@
         "account#0 (copy)"
       ]
     },
-    "141": {
+    "148": {
       "op": "cover 2",
       "stack_out": [
         "tmp%3#0",
@@ -520,7 +524,7 @@
         "account#0 (copy)"
       ]
     },
-    "143": {
+    "150": {
       "op": "concat",
       "defined_out": [
         "account#0",
@@ -533,7 +537,7 @@
         "map_prefixed_key%0#0"
       ]
     },
-    "144": {
+    "151": {
       "op": "uncover 2",
       "defined_out": [
         "account#0",
@@ -547,7 +551,7 @@
         "role#0"
       ]
     },
-    "146": {
+    "153": {
       "op": "dup",
       "defined_out": [
         "account#0",
@@ -562,7 +566,7 @@
         "role#0 (copy)"
       ]
     },
-    "147": {
+    "154": {
       "op": "cover 2",
       "stack_out": [
         "tmp%3#0",
@@ -572,7 +576,7 @@
         "role#0 (copy)"
       ]
     },
-    "149": {
+    "156": {
       "op": "box_put",
       "stack_out": [
         "tmp%3#0",
@@ -580,7 +584,7 @@
         "role#0"
       ]
     },
-    "150": {
+    "157": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%1#0"
@@ -590,7 +594,7 @@
         "aggregate%head%1#0"
       ]
     },
-    "151": {
+    "158": {
       "op": "pushbytes 0x69875366 // method \"ActorRegistered(address,uint8)\"",
       "defined_out": [
         "Method(ActorRegistered(address,uint8))",
@@ -602,7 +606,7 @@
         "Method(ActorRegistered(address,uint8))"
       ]
     },
-    "157": {
+    "164": {
       "op": "swap",
       "stack_out": [
         "tmp%3#0",
@@ -610,7 +614,7 @@
         "aggregate%head%1#0"
       ]
     },
-    "158": {
+    "165": {
       "op": "concat",
       "defined_out": [
         "event%0#0"
@@ -620,13 +624,13 @@
         "event%0#0"
       ]
     },
-    "159": {
+    "166": {
       "op": "log",
       "stack_out": [
         "tmp%3#0"
       ]
     },
-    "160": {
+    "167": {
       "op": "intc_0 // 1",
       "defined_out": [
         "1"
@@ -636,13 +640,13 @@
         "1"
       ]
     },
-    "161": {
+    "168": {
       "op": "return",
       "stack_out": [
         "tmp%3#0"
       ]
     },
-    "162": {
+    "169": {
       "block": "register_actor_bool_false@4",
       "stack_in": [
         "tmp%3#0",
@@ -660,13 +664,13 @@
         "and_result%0#0"
       ]
     },
-    "163": {
+    "170": {
       "op": "b register_actor_bool_merge@5"
     },
-    "166": {
-      "subroutine": "contracts.traceability.contract.Traceability.role_of[routing]",
+    "173": {
+      "subroutine": "contracts.traceability.contract.Traceability.revoke_actor[routing]",
       "params": {},
-      "block": "role_of",
+      "block": "revoke_actor",
       "stack_in": [],
       "op": "txna ApplicationArgs 1",
       "defined_out": [
@@ -676,7 +680,7 @@
         "account#0"
       ]
     },
-    "169": {
+    "176": {
       "op": "dup",
       "defined_out": [
         "account#0",
@@ -687,7 +691,7 @@
         "account#0 (copy)"
       ]
     },
-    "170": {
+    "177": {
       "op": "len",
       "defined_out": [
         "account#0",
@@ -698,7 +702,7 @@
         "len%0#0"
       ]
     },
-    "171": {
+    "178": {
       "op": "intc_3 // 32",
       "defined_out": [
         "32",
@@ -711,7 +715,7 @@
         "32"
       ]
     },
-    "172": {
+    "179": {
       "op": "==",
       "defined_out": [
         "account#0",
@@ -722,14 +726,308 @@
         "eq%0#0"
       ]
     },
-    "173": {
+    "180": {
       "error": "invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
       "op": "assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
       "stack_out": [
         "account#0"
       ]
     },
-    "174": {
+    "181": {
+      "op": "txn Sender",
+      "defined_out": [
+        "account#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "account#0",
+        "tmp%0#1"
+      ]
+    },
+    "183": {
+      "op": "global CreatorAddress",
+      "defined_out": [
+        "account#0",
+        "tmp%0#1",
+        "tmp%1#0"
+      ],
+      "stack_out": [
+        "account#0",
+        "tmp%0#1",
+        "tmp%1#0"
+      ]
+    },
+    "185": {
+      "op": "==",
+      "defined_out": [
+        "account#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "account#0",
+        "tmp%2#0"
+      ]
+    },
+    "186": {
+      "error": "admin only",
+      "op": "assert // admin only",
+      "stack_out": [
+        "account#0"
+      ]
+    },
+    "187": {
+      "op": "bytec_2 // 0x61",
+      "defined_out": [
+        "0x61",
+        "account#0"
+      ],
+      "stack_out": [
+        "account#0",
+        "0x61"
+      ]
+    },
+    "188": {
+      "op": "dig 1",
+      "stack_out": [
+        "account#0",
+        "0x61",
+        "account#0 (copy)"
+      ]
+    },
+    "190": {
+      "op": "concat",
+      "defined_out": [
+        "account#0",
+        "map_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "account#0",
+        "map_prefixed_key%0#0"
+      ]
+    },
+    "191": {
+      "op": "dup",
+      "defined_out": [
+        "account#0",
+        "map_prefixed_key%0#0",
+        "map_prefixed_key%0#0 (copy)"
+      ],
+      "stack_out": [
+        "account#0",
+        "map_prefixed_key%0#0",
+        "map_prefixed_key%0#0 (copy)"
+      ]
+    },
+    "192": {
+      "op": "box_len",
+      "defined_out": [
+        "_%0#0",
+        "account#0",
+        "map_prefixed_key%0#0",
+        "maybe_exists%0#0"
+      ],
+      "stack_out": [
+        "account#0",
+        "map_prefixed_key%0#0",
+        "_%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "193": {
+      "op": "bury 1",
+      "stack_out": [
+        "account#0",
+        "map_prefixed_key%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "195": {
+      "error": "unknown actor",
+      "op": "assert // unknown actor",
+      "stack_out": [
+        "account#0",
+        "map_prefixed_key%0#0"
+      ]
+    },
+    "196": {
+      "op": "dup",
+      "stack_out": [
+        "account#0",
+        "map_prefixed_key%0#0",
+        "map_prefixed_key%0#0 (copy)"
+      ]
+    },
+    "197": {
+      "op": "box_get",
+      "defined_out": [
+        "account#0",
+        "aggregate%box_get%1#0",
+        "map_prefixed_key%0#0",
+        "role#0"
+      ],
+      "stack_out": [
+        "account#0",
+        "map_prefixed_key%0#0",
+        "role#0",
+        "aggregate%box_get%1#0"
+      ]
+    },
+    "198": {
+      "op": "pop",
+      "stack_out": [
+        "account#0",
+        "map_prefixed_key%0#0",
+        "role#0"
+      ]
+    },
+    "199": {
+      "op": "swap",
+      "stack_out": [
+        "account#0",
+        "role#0",
+        "map_prefixed_key%0#0"
+      ]
+    },
+    "200": {
+      "op": "box_del",
+      "defined_out": [
+        "account#0",
+        "role#0",
+        "{box_del}"
+      ],
+      "stack_out": [
+        "account#0",
+        "role#0",
+        "{box_del}"
+      ]
+    },
+    "201": {
+      "op": "pop",
+      "stack_out": [
+        "account#0",
+        "role#0"
+      ]
+    },
+    "202": {
+      "op": "concat",
+      "defined_out": [
+        "aggregate%head%1#0"
+      ],
+      "stack_out": [
+        "aggregate%head%1#0"
+      ]
+    },
+    "203": {
+      "op": "pushbytes 0xecee12fd // method \"ActorRevoked(address,uint8)\"",
+      "defined_out": [
+        "Method(ActorRevoked(address,uint8))",
+        "aggregate%head%1#0"
+      ],
+      "stack_out": [
+        "aggregate%head%1#0",
+        "Method(ActorRevoked(address,uint8))"
+      ]
+    },
+    "209": {
+      "op": "swap",
+      "stack_out": [
+        "Method(ActorRevoked(address,uint8))",
+        "aggregate%head%1#0"
+      ]
+    },
+    "210": {
+      "op": "concat",
+      "defined_out": [
+        "event%0#0"
+      ],
+      "stack_out": [
+        "event%0#0"
+      ]
+    },
+    "211": {
+      "op": "log",
+      "stack_out": []
+    },
+    "212": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "213": {
+      "op": "return",
+      "stack_out": []
+    },
+    "214": {
+      "subroutine": "contracts.traceability.contract.Traceability.role_of[routing]",
+      "params": {},
+      "block": "role_of",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "account#0"
+      ],
+      "stack_out": [
+        "account#0"
+      ]
+    },
+    "217": {
+      "op": "dup",
+      "defined_out": [
+        "account#0",
+        "account#0 (copy)"
+      ],
+      "stack_out": [
+        "account#0",
+        "account#0 (copy)"
+      ]
+    },
+    "218": {
+      "op": "len",
+      "defined_out": [
+        "account#0",
+        "len%0#0"
+      ],
+      "stack_out": [
+        "account#0",
+        "len%0#0"
+      ]
+    },
+    "219": {
+      "op": "intc_3 // 32",
+      "defined_out": [
+        "32",
+        "account#0",
+        "len%0#0"
+      ],
+      "stack_out": [
+        "account#0",
+        "len%0#0",
+        "32"
+      ]
+    },
+    "220": {
+      "op": "==",
+      "defined_out": [
+        "account#0",
+        "eq%0#0"
+      ],
+      "stack_out": [
+        "account#0",
+        "eq%0#0"
+      ]
+    },
+    "221": {
+      "error": "invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
+      "op": "assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
+      "stack_out": [
+        "account#0"
+      ]
+    },
+    "222": {
       "callsub": "contracts.traceability.contract.Traceability._role",
       "op": "callsub _role",
       "defined_out": [
@@ -739,7 +1037,7 @@
         "tmp%0#1"
       ]
     },
-    "177": {
+    "225": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0"
@@ -748,8 +1046,8 @@
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "178": {
-      "op": "bytec_2 // 0x151f7c75",
+    "226": {
+      "op": "bytec_3 // 0x151f7c75",
       "defined_out": [
         "0x151f7c75",
         "aggregate%val_as_bytes%0#0"
@@ -759,14 +1057,14 @@
         "0x151f7c75"
       ]
     },
-    "179": {
+    "227": {
       "op": "swap",
       "stack_out": [
         "0x151f7c75",
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "180": {
+    "228": {
       "op": "concat",
       "defined_out": [
         "tmp%3#0"
@@ -775,11 +1073,11 @@
         "tmp%3#0"
       ]
     },
-    "181": {
+    "229": {
       "op": "log",
       "stack_out": []
     },
-    "182": {
+    "230": {
       "op": "intc_0 // 1",
       "defined_out": [
         "1"
@@ -788,11 +1086,11 @@
         "1"
       ]
     },
-    "183": {
+    "231": {
       "op": "return",
       "stack_out": []
     },
-    "184": {
+    "232": {
       "subroutine": "contracts.traceability.contract.Traceability.register_lot[routing]",
       "params": {},
       "block": "register_lot",
@@ -805,7 +1103,7 @@
         "lot#0"
       ]
     },
-    "187": {
+    "235": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -816,7 +1114,7 @@
         "lot#0 (copy)"
       ]
     },
-    "188": {
+    "236": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -827,7 +1125,7 @@
         "len%0#0"
       ]
     },
-    "189": {
+    "237": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -840,7 +1138,7 @@
         "8"
       ]
     },
-    "190": {
+    "238": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -851,14 +1149,14 @@
         "eq%0#0"
       ]
     },
-    "191": {
+    "239": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "lot#0"
       ]
     },
-    "192": {
+    "240": {
       "op": "txna ApplicationArgs 2",
       "defined_out": [
         "lot#0",
@@ -869,7 +1167,7 @@
         "total#0"
       ]
     },
-    "195": {
+    "243": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -882,7 +1180,7 @@
         "total#0 (copy)"
       ]
     },
-    "196": {
+    "244": {
       "op": "len",
       "defined_out": [
         "len%1#0",
@@ -895,7 +1193,7 @@
         "len%1#0"
       ]
     },
-    "197": {
+    "245": {
       "op": "intc_2 // 8",
       "stack_out": [
         "lot#0",
@@ -904,7 +1202,7 @@
         "8"
       ]
     },
-    "198": {
+    "246": {
       "op": "==",
       "defined_out": [
         "eq%1#0",
@@ -917,7 +1215,7 @@
         "eq%1#0"
       ]
     },
-    "199": {
+    "247": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
@@ -925,7 +1223,7 @@
         "total#0"
       ]
     },
-    "200": {
+    "248": {
       "op": "txn Sender",
       "defined_out": [
         "lot#0",
@@ -938,7 +1236,7 @@
         "producer#0"
       ]
     },
-    "202": {
+    "250": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -953,7 +1251,7 @@
         "producer#0 (copy)"
       ]
     },
-    "203": {
+    "251": {
       "callsub": "contracts.traceability.contract.Traceability._role",
       "op": "callsub _role",
       "defined_out": [
@@ -969,7 +1267,7 @@
         "tmp%1#1"
       ]
     },
-    "206": {
+    "254": {
       "op": "intc_0 // 1",
       "defined_out": [
         "1",
@@ -986,7 +1284,7 @@
         "1"
       ]
     },
-    "207": {
+    "255": {
       "op": "==",
       "defined_out": [
         "lot#0",
@@ -1001,7 +1299,7 @@
         "tmp%2#0"
       ]
     },
-    "208": {
+    "256": {
       "error": "winery only",
       "op": "assert // winery only",
       "stack_out": [
@@ -1010,7 +1308,7 @@
         "producer#0"
       ]
     },
-    "209": {
+    "257": {
       "op": "bytec_0 // 0x6c",
       "defined_out": [
         "0x6c",
@@ -1025,7 +1323,7 @@
         "0x6c"
       ]
     },
-    "210": {
+    "258": {
       "op": "dig 3",
       "stack_out": [
         "lot#0",
@@ -1035,7 +1333,7 @@
         "lot#0 (copy)"
       ]
     },
-    "212": {
+    "260": {
       "op": "concat",
       "defined_out": [
         "lot#0",
@@ -1050,7 +1348,7 @@
         "map_prefixed_key%0#0"
       ]
     },
-    "213": {
+    "261": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -1067,7 +1365,7 @@
         "map_prefixed_key%0#0 (copy)"
       ]
     },
-    "214": {
+    "262": {
       "op": "box_len",
       "defined_out": [
         "_%0#0",
@@ -1086,7 +1384,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "215": {
+    "263": {
       "op": "bury 1",
       "stack_out": [
         "lot#0",
@@ -1096,7 +1394,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "217": {
+    "265": {
       "op": "!",
       "defined_out": [
         "lot#0",
@@ -1113,7 +1411,7 @@
         "tmp%3#0"
       ]
     },
-    "218": {
+    "266": {
       "error": "lot exists",
       "op": "assert // lot exists",
       "stack_out": [
@@ -1123,7 +1421,7 @@
         "map_prefixed_key%0#0"
       ]
     },
-    "219": {
+    "267": {
       "op": "dig 2",
       "stack_out": [
         "lot#0",
@@ -1133,7 +1431,7 @@
         "total#0 (copy)"
       ]
     },
-    "221": {
+    "269": {
       "op": "btoi",
       "defined_out": [
         "lot#0",
@@ -1150,7 +1448,7 @@
         "tmp%4#0"
       ]
     },
-    "222": {
+    "270": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -1169,7 +1467,7 @@
         "tmp%4#0 (copy)"
       ]
     },
-    "223": {
+    "271": {
       "error": "empty lot",
       "op": "assert // empty lot",
       "stack_out": [
@@ -1180,7 +1478,7 @@
         "tmp%4#0"
       ]
     },
-    "224": {
+    "272": {
       "op": "dig 2",
       "stack_out": [
         "lot#0",
@@ -1191,7 +1489,7 @@
         "producer#0 (copy)"
       ]
     },
-    "226": {
+    "274": {
       "op": "dig 4",
       "stack_out": [
         "lot#0",
@@ -1203,7 +1501,7 @@
         "total#0 (copy)"
       ]
     },
-    "228": {
+    "276": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%1#0",
@@ -1222,7 +1520,7 @@
         "aggregate%head%1#0"
       ]
     },
-    "229": {
+    "277": {
       "op": "pushbytes 0x80",
       "defined_out": [
         "0x80",
@@ -1243,7 +1541,7 @@
         "0x80"
       ]
     },
-    "232": {
+    "280": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%2#0",
@@ -1262,7 +1560,7 @@
         "aggregate%head%2#0"
       ]
     },
-    "233": {
+    "281": {
       "op": "uncover 2",
       "stack_out": [
         "lot#0",
@@ -1273,7 +1571,7 @@
         "map_prefixed_key%0#0"
       ]
     },
-    "235": {
+    "283": {
       "op": "swap",
       "stack_out": [
         "lot#0",
@@ -1284,7 +1582,7 @@
         "aggregate%head%2#0"
       ]
     },
-    "236": {
+    "284": {
       "op": "box_put",
       "stack_out": [
         "lot#0",
@@ -1293,7 +1591,7 @@
         "tmp%4#0"
       ]
     },
-    "237": {
+    "285": {
       "op": "uncover 3",
       "stack_out": [
         "total#0",
@@ -1302,7 +1600,7 @@
         "lot#0"
       ]
     },
-    "239": {
+    "287": {
       "op": "uncover 2",
       "stack_out": [
         "total#0",
@@ -1311,7 +1609,7 @@
         "producer#0"
       ]
     },
-    "241": {
+    "289": {
       "op": "concat",
       "defined_out": [
         "tmp%0#0",
@@ -1324,7 +1622,7 @@
         "tmp%0#0"
       ]
     },
-    "242": {
+    "290": {
       "op": "bytec_1 // 0x62",
       "defined_out": [
         "0x62",
@@ -1339,7 +1637,7 @@
         "0x62"
       ]
     },
-    "243": {
+    "291": {
       "op": "dig 1",
       "defined_out": [
         "0x62",
@@ -1356,7 +1654,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "245": {
+    "293": {
       "op": "concat",
       "defined_out": [
         "map_prefixed_key%2#0",
@@ -1371,7 +1669,7 @@
         "map_prefixed_key%2#0"
       ]
     },
-    "246": {
+    "294": {
       "op": "uncover 2",
       "stack_out": [
         "total#0",
@@ -1380,7 +1678,7 @@
         "tmp%4#0"
       ]
     },
-    "248": {
+    "296": {
       "op": "itob",
       "defined_out": [
         "encoded_value%0#0",
@@ -1395,21 +1693,21 @@
         "encoded_value%0#0"
       ]
     },
-    "249": {
+    "297": {
       "op": "box_put",
       "stack_out": [
         "total#0",
         "tmp%0#0"
       ]
     },
-    "250": {
+    "298": {
       "op": "swap",
       "stack_out": [
         "tmp%0#0",
         "total#0"
       ]
     },
-    "251": {
+    "299": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%5#0"
@@ -1418,7 +1716,7 @@
         "aggregate%head%5#0"
       ]
     },
-    "252": {
+    "300": {
       "op": "pushbytes 0xf2a93612 // method \"LotRegistered(uint64,address,uint64)\"",
       "defined_out": [
         "Method(LotRegistered(uint64,address,uint64))",
@@ -1429,14 +1727,14 @@
         "Method(LotRegistered(uint64,address,uint64))"
       ]
     },
-    "258": {
+    "306": {
       "op": "swap",
       "stack_out": [
         "Method(LotRegistered(uint64,address,uint64))",
         "aggregate%head%5#0"
       ]
     },
-    "259": {
+    "307": {
       "op": "concat",
       "defined_out": [
         "event%0#0"
@@ -1445,28 +1743,28 @@
         "event%0#0"
       ]
     },
-    "260": {
+    "308": {
       "op": "log",
       "stack_out": []
     },
-    "261": {
+    "309": {
       "op": "intc_0 // 1",
       "stack_out": [
         "1"
       ]
     },
-    "262": {
+    "310": {
       "op": "return",
       "stack_out": []
     },
-    "263": {
+    "311": {
       "subroutine": "contracts.traceability.contract.Traceability.transfer[routing]",
       "params": {},
       "block": "transfer",
       "stack_in": [],
       "op": "txna ApplicationArgs 1"
     },
-    "266": {
+    "314": {
       "op": "dupn 2",
       "defined_out": [
         "lot#0",
@@ -1478,7 +1776,7 @@
         "lot#0 (copy)"
       ]
     },
-    "268": {
+    "316": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -1490,7 +1788,7 @@
         "len%0#0"
       ]
     },
-    "269": {
+    "317": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -1504,7 +1802,7 @@
         "8"
       ]
     },
-    "270": {
+    "318": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -1516,7 +1814,7 @@
         "eq%0#0"
       ]
     },
-    "271": {
+    "319": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
@@ -1524,10 +1822,10 @@
         "lot#0"
       ]
     },
-    "272": {
+    "320": {
       "op": "txna ApplicationArgs 2"
     },
-    "275": {
+    "323": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -1540,7 +1838,7 @@
         "to#0"
       ]
     },
-    "276": {
+    "324": {
       "op": "cover 2",
       "stack_out": [
         "lot#0",
@@ -1549,7 +1847,7 @@
         "to#0"
       ]
     },
-    "278": {
+    "326": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -1564,7 +1862,7 @@
         "to#0 (copy)"
       ]
     },
-    "279": {
+    "327": {
       "op": "len",
       "defined_out": [
         "len%1#0",
@@ -1579,7 +1877,7 @@
         "len%1#0"
       ]
     },
-    "280": {
+    "328": {
       "op": "intc_3 // 32",
       "defined_out": [
         "32",
@@ -1596,7 +1894,7 @@
         "32"
       ]
     },
-    "281": {
+    "329": {
       "op": "==",
       "defined_out": [
         "eq%1#0",
@@ -1611,7 +1909,7 @@
         "eq%1#0"
       ]
     },
-    "282": {
+    "330": {
       "error": "invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
       "op": "assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
       "stack_out": [
@@ -1621,10 +1919,10 @@
         "to#0"
       ]
     },
-    "283": {
+    "331": {
       "op": "txna ApplicationArgs 3"
     },
-    "286": {
+    "334": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -1640,7 +1938,7 @@
         "quantity#0"
       ]
     },
-    "287": {
+    "335": {
       "op": "cover 5",
       "defined_out": [
         "lot#0",
@@ -1656,7 +1954,7 @@
         "quantity#0"
       ]
     },
-    "289": {
+    "337": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -1674,7 +1972,7 @@
         "quantity#0 (copy)"
       ]
     },
-    "290": {
+    "338": {
       "op": "len",
       "defined_out": [
         "len%2#0",
@@ -1692,7 +1990,7 @@
         "len%2#0"
       ]
     },
-    "291": {
+    "339": {
       "op": "intc_2 // 8",
       "stack_out": [
         "quantity#0",
@@ -1705,7 +2003,7 @@
         "8"
       ]
     },
-    "292": {
+    "340": {
       "op": "==",
       "defined_out": [
         "eq%2#0",
@@ -1723,7 +2021,7 @@
         "eq%2#0"
       ]
     },
-    "293": {
+    "341": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
@@ -1735,7 +2033,7 @@
         "quantity#0"
       ]
     },
-    "294": {
+    "342": {
       "op": "txn Sender",
       "defined_out": [
         "lot#0",
@@ -1753,7 +2051,7 @@
         "sender#0"
       ]
     },
-    "296": {
+    "344": {
       "op": "bytec_0 // 0x6c",
       "defined_out": [
         "0x6c",
@@ -1773,7 +2071,7 @@
         "0x6c"
       ]
     },
-    "297": {
+    "345": {
       "op": "dig 4",
       "stack_out": [
         "quantity#0",
@@ -1787,7 +2085,7 @@
         "lot#0 (copy)"
       ]
     },
-    "299": {
+    "347": {
       "op": "concat",
       "defined_out": [
         "lot#0",
@@ -1807,7 +2105,7 @@
         "map_prefixed_key%0#0"
       ]
     },
-    "300": {
+    "348": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -1829,7 +2127,7 @@
         "map_prefixed_key%0#0 (copy)"
       ]
     },
-    "301": {
+    "349": {
       "op": "box_len",
       "defined_out": [
         "_%0#0",
@@ -1853,7 +2151,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "302": {
+    "350": {
       "op": "bury 1",
       "stack_out": [
         "quantity#0",
@@ -1867,7 +2165,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "304": {
+    "352": {
       "error": "unknown lot",
       "op": "assert // unknown lot",
       "stack_out": [
@@ -1881,7 +2179,7 @@
         "map_prefixed_key%0#0"
       ]
     },
-    "305": {
+    "353": {
       "op": "box_get",
       "defined_out": [
         "aggregate%box_get%0#0",
@@ -1903,7 +2201,7 @@
         "aggregate%box_get%1#0"
       ]
     },
-    "306": {
+    "354": {
       "op": "pop",
       "stack_out": [
         "quantity#0",
@@ -1916,7 +2214,7 @@
         "aggregate%box_get%0#0"
       ]
     },
-    "307": {
+    "355": {
       "op": "pushint 320",
       "defined_out": [
         "320",
@@ -1938,7 +2236,7 @@
         "320"
       ]
     },
-    "310": {
+    "358": {
       "op": "getbit",
       "defined_out": [
         "aggregate%get_bit%0#0",
@@ -1958,7 +2256,7 @@
         "aggregate%get_bit%0#0"
       ]
     },
-    "311": {
+    "359": {
       "op": "pushbytes 0x00",
       "defined_out": [
         "0x00",
@@ -1980,7 +2278,7 @@
         "0x00"
       ]
     },
-    "314": {
+    "362": {
       "op": "intc_1 // 0",
       "stack_out": [
         "quantity#0",
@@ -1995,7 +2293,7 @@
         "0"
       ]
     },
-    "315": {
+    "363": {
       "op": "uncover 2",
       "stack_out": [
         "quantity#0",
@@ -2010,7 +2308,7 @@
         "aggregate%get_bit%0#0"
       ]
     },
-    "317": {
+    "365": {
       "op": "setbit",
       "defined_out": [
         "aggregate%encoded_bool%0#0",
@@ -2030,7 +2328,7 @@
         "aggregate%encoded_bool%0#0"
       ]
     },
-    "318": {
+    "366": {
       "op": "intc_1 // 0",
       "stack_out": [
         "quantity#0",
@@ -2044,7 +2342,7 @@
         "0"
       ]
     },
-    "319": {
+    "367": {
       "op": "getbit",
       "defined_out": [
         "aggregate%get_bit%1#0",
@@ -2064,7 +2362,7 @@
         "aggregate%get_bit%1#0"
       ]
     },
-    "320": {
+    "368": {
       "error": "lot retired",
       "op": "assert // lot retired",
       "stack_out": [
@@ -2077,7 +2375,61 @@
         "sender#0"
       ]
     },
-    "321": {
+    "369": {
+      "op": "dup",
+      "defined_out": [
+        "lot#0",
+        "quantity#0",
+        "sender#0",
+        "sender#0 (copy)",
+        "to#0"
+      ],
+      "stack_out": [
+        "quantity#0",
+        "lot#0",
+        "to#0",
+        "lot#0",
+        "to#0",
+        "quantity#0",
+        "sender#0",
+        "sender#0 (copy)"
+      ]
+    },
+    "370": {
+      "callsub": "contracts.traceability.contract.Traceability._role",
+      "op": "callsub _role",
+      "defined_out": [
+        "lot#0",
+        "quantity#0",
+        "sender#0",
+        "tmp%3#0",
+        "to#0"
+      ],
+      "stack_out": [
+        "quantity#0",
+        "lot#0",
+        "to#0",
+        "lot#0",
+        "to#0",
+        "quantity#0",
+        "sender#0",
+        "tmp%3#0"
+      ]
+    },
+    "373": {
+      "error": "unknown sender",
+      "op": "assert // unknown sender",
+      "stack_out": [
+        "quantity#0",
+        "lot#0",
+        "to#0",
+        "lot#0",
+        "to#0",
+        "quantity#0",
+        "sender#0"
+      ]
+    },
+    "374": {
       "op": "swap",
       "stack_out": [
         "quantity#0",
@@ -2089,139 +2441,12 @@
         "quantity#0"
       ]
     },
-    "322": {
+    "375": {
       "op": "btoi",
       "defined_out": [
         "lot#0",
         "quantity#0",
         "sender#0",
-        "tmp%3#0",
-        "to#0"
-      ],
-      "stack_out": [
-        "quantity#0",
-        "lot#0",
-        "to#0",
-        "lot#0",
-        "to#0",
-        "sender#0",
-        "tmp%3#0"
-      ]
-    },
-    "323": {
-      "op": "dup",
-      "stack_out": [
-        "quantity#0",
-        "lot#0",
-        "to#0",
-        "lot#0",
-        "to#0",
-        "sender#0",
-        "tmp%3#0",
-        "tmp%3#0"
-      ]
-    },
-    "324": {
-      "op": "cover 4",
-      "defined_out": [
-        "lot#0",
-        "quantity#0",
-        "sender#0",
-        "tmp%3#0",
-        "to#0"
-      ],
-      "stack_out": [
-        "quantity#0",
-        "lot#0",
-        "to#0",
-        "tmp%3#0",
-        "lot#0",
-        "to#0",
-        "sender#0",
-        "tmp%3#0"
-      ]
-    },
-    "326": {
-      "op": "dup",
-      "defined_out": [
-        "lot#0",
-        "quantity#0",
-        "sender#0",
-        "tmp%3#0",
-        "tmp%3#0 (copy)",
-        "to#0"
-      ],
-      "stack_out": [
-        "quantity#0",
-        "lot#0",
-        "to#0",
-        "tmp%3#0",
-        "lot#0",
-        "to#0",
-        "sender#0",
-        "tmp%3#0",
-        "tmp%3#0 (copy)"
-      ]
-    },
-    "327": {
-      "error": "empty transfer",
-      "op": "assert // empty transfer",
-      "stack_out": [
-        "quantity#0",
-        "lot#0",
-        "to#0",
-        "tmp%3#0",
-        "lot#0",
-        "to#0",
-        "sender#0",
-        "tmp%3#0"
-      ]
-    },
-    "328": {
-      "op": "dig 2",
-      "stack_out": [
-        "quantity#0",
-        "lot#0",
-        "to#0",
-        "tmp%3#0",
-        "lot#0",
-        "to#0",
-        "sender#0",
-        "tmp%3#0",
-        "to#0 (copy)"
-      ]
-    },
-    "330": {
-      "op": "dig 2",
-      "defined_out": [
-        "lot#0",
-        "quantity#0",
-        "sender#0",
-        "sender#0 (copy)",
-        "tmp%3#0",
-        "to#0",
-        "to#0 (copy)"
-      ],
-      "stack_out": [
-        "quantity#0",
-        "lot#0",
-        "to#0",
-        "tmp%3#0",
-        "lot#0",
-        "to#0",
-        "sender#0",
-        "tmp%3#0",
-        "to#0 (copy)",
-        "sender#0 (copy)"
-      ]
-    },
-    "332": {
-      "op": "!=",
-      "defined_out": [
-        "lot#0",
-        "quantity#0",
-        "sender#0",
-        "tmp%3#0",
         "tmp%5#0",
         "to#0"
       ],
@@ -2229,226 +2454,344 @@
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
         "lot#0",
         "to#0",
         "sender#0",
-        "tmp%3#0",
         "tmp%5#0"
       ]
     },
-    "333": {
+    "376": {
+      "op": "dup",
+      "stack_out": [
+        "quantity#0",
+        "lot#0",
+        "to#0",
+        "lot#0",
+        "to#0",
+        "sender#0",
+        "tmp%5#0",
+        "tmp%5#0"
+      ]
+    },
+    "377": {
+      "op": "cover 4",
+      "defined_out": [
+        "lot#0",
+        "quantity#0",
+        "sender#0",
+        "tmp%5#0",
+        "to#0"
+      ],
+      "stack_out": [
+        "quantity#0",
+        "lot#0",
+        "to#0",
+        "tmp%5#0",
+        "lot#0",
+        "to#0",
+        "sender#0",
+        "tmp%5#0"
+      ]
+    },
+    "379": {
+      "op": "dup",
+      "defined_out": [
+        "lot#0",
+        "quantity#0",
+        "sender#0",
+        "tmp%5#0",
+        "tmp%5#0 (copy)",
+        "to#0"
+      ],
+      "stack_out": [
+        "quantity#0",
+        "lot#0",
+        "to#0",
+        "tmp%5#0",
+        "lot#0",
+        "to#0",
+        "sender#0",
+        "tmp%5#0",
+        "tmp%5#0 (copy)"
+      ]
+    },
+    "380": {
+      "error": "empty transfer",
+      "op": "assert // empty transfer",
+      "stack_out": [
+        "quantity#0",
+        "lot#0",
+        "to#0",
+        "tmp%5#0",
+        "lot#0",
+        "to#0",
+        "sender#0",
+        "tmp%5#0"
+      ]
+    },
+    "381": {
+      "op": "dig 2",
+      "stack_out": [
+        "quantity#0",
+        "lot#0",
+        "to#0",
+        "tmp%5#0",
+        "lot#0",
+        "to#0",
+        "sender#0",
+        "tmp%5#0",
+        "to#0 (copy)"
+      ]
+    },
+    "383": {
+      "op": "dig 2",
+      "stack_out": [
+        "quantity#0",
+        "lot#0",
+        "to#0",
+        "tmp%5#0",
+        "lot#0",
+        "to#0",
+        "sender#0",
+        "tmp%5#0",
+        "to#0 (copy)",
+        "sender#0 (copy)"
+      ]
+    },
+    "385": {
+      "op": "!=",
+      "defined_out": [
+        "lot#0",
+        "quantity#0",
+        "sender#0",
+        "tmp%5#0",
+        "tmp%7#0",
+        "to#0"
+      ],
+      "stack_out": [
+        "quantity#0",
+        "lot#0",
+        "to#0",
+        "tmp%5#0",
+        "lot#0",
+        "to#0",
+        "sender#0",
+        "tmp%5#0",
+        "tmp%7#0"
+      ]
+    },
+    "386": {
       "error": "self transfer",
       "op": "assert // self transfer",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "lot#0",
         "to#0",
         "sender#0",
-        "tmp%3#0"
+        "tmp%5#0"
       ]
     },
-    "334": {
+    "387": {
       "op": "uncover 2",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "lot#0",
         "sender#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "to#0"
       ]
     },
-    "336": {
+    "389": {
       "callsub": "contracts.traceability.contract.Traceability._role",
       "op": "callsub _role",
       "defined_out": [
         "lot#0",
         "quantity#0",
         "sender#0",
-        "tmp%3#0",
-        "tmp%6#0",
+        "tmp%5#0",
+        "tmp%8#0",
         "to#0"
       ],
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "lot#0",
         "sender#0",
-        "tmp%3#0",
-        "tmp%6#0"
+        "tmp%5#0",
+        "tmp%8#0"
       ]
     },
-    "339": {
+    "392": {
       "error": "unknown recipient",
       "op": "assert // unknown recipient",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "lot#0",
         "sender#0",
-        "tmp%3#0"
+        "tmp%5#0"
       ]
     },
-    "340": {
+    "393": {
       "op": "cover 2",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
-        "tmp%3#0",
+        "tmp%5#0",
+        "tmp%5#0",
         "lot#0",
         "sender#0"
       ]
     },
-    "342": {
+    "395": {
       "op": "concat",
       "defined_out": [
         "lot#0",
         "quantity#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "to#0"
       ],
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
-        "tmp%3#0",
+        "tmp%5#0",
+        "tmp%5#0",
         "sender_key#0"
       ]
     },
-    "343": {
+    "396": {
       "op": "dup",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
-        "tmp%3#0",
+        "tmp%5#0",
+        "tmp%5#0",
         "sender_key#0",
         "sender_key#0"
       ]
     },
-    "344": {
+    "397": {
       "op": "cover 2",
       "defined_out": [
         "lot#0",
         "quantity#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "to#0"
       ],
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0"
       ]
     },
-    "346": {
+    "399": {
       "op": "bytec_1 // 0x62",
       "defined_out": [
         "0x62",
         "lot#0",
         "quantity#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "to#0"
       ],
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "0x62"
       ]
     },
-    "347": {
+    "400": {
       "op": "swap",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "0x62",
         "sender_key#0"
       ]
     },
-    "348": {
+    "401": {
       "op": "concat",
       "defined_out": [
         "lot#0",
         "map_prefixed_key%2#0",
         "quantity#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "to#0"
       ],
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "map_prefixed_key%2#0"
       ]
     },
-    "349": {
+    "402": {
       "op": "dup",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "map_prefixed_key%2#0",
         "map_prefixed_key%2#0"
       ]
     },
-    "350": {
+    "403": {
       "op": "cover 2",
       "defined_out": [
         "lot#0",
         "map_prefixed_key%2#0",
         "quantity#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "to#0"
       ],
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "map_prefixed_key%2#0"
       ]
     },
-    "352": {
+    "405": {
       "op": "box_get",
       "defined_out": [
         "lot#0",
@@ -2457,36 +2800,36 @@
         "maybe_value%0#0",
         "quantity#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "to#0"
       ],
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "maybe_value%0#0",
         "maybe_exists%1#0"
       ]
     },
-    "353": {
+    "406": {
       "op": "swap",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "maybe_exists%1#0",
         "maybe_value%0#0"
       ]
     },
-    "354": {
+    "407": {
       "op": "btoi",
       "defined_out": [
         "lot#0",
@@ -2495,67 +2838,67 @@
         "maybe_value_converted%0#0",
         "quantity#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "to#0"
       ],
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "maybe_exists%1#0",
         "maybe_value_converted%0#0"
       ]
     },
-    "355": {
+    "408": {
       "op": "intc_1 // 0",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "maybe_exists%1#0",
         "maybe_value_converted%0#0",
         "0"
       ]
     },
-    "356": {
+    "409": {
       "op": "swap",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "maybe_exists%1#0",
         "0",
         "maybe_value_converted%0#0"
       ]
     },
-    "357": {
+    "410": {
       "op": "uncover 2",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "0",
         "maybe_value_converted%0#0",
         "maybe_exists%1#0"
       ]
     },
-    "359": {
+    "412": {
       "op": "select",
       "defined_out": [
         "held#0",
@@ -2563,21 +2906,21 @@
         "map_prefixed_key%2#0",
         "quantity#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "to#0"
       ],
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "held#0"
       ]
     },
-    "360": {
+    "413": {
       "op": "dup",
       "defined_out": [
         "held#0",
@@ -2586,37 +2929,37 @@
         "map_prefixed_key%2#0",
         "quantity#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "to#0"
       ],
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "held#0",
         "held#0 (copy)"
       ]
     },
-    "361": {
+    "414": {
       "op": "dig 2",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "held#0",
         "held#0 (copy)",
-        "tmp%3#0 (copy)"
+        "tmp%5#0 (copy)"
       ]
     },
-    "363": {
+    "416": {
       "op": ">=",
       "defined_out": [
         "held#0",
@@ -2624,50 +2967,50 @@
         "map_prefixed_key%2#0",
         "quantity#0",
         "sender_key#0",
-        "tmp%10#0",
-        "tmp%3#0",
+        "tmp%12#0",
+        "tmp%5#0",
         "to#0"
       ],
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "held#0",
-        "tmp%10#0"
+        "tmp%12#0"
       ]
     },
-    "364": {
+    "417": {
       "error": "insufficient balance",
       "op": "assert // insufficient balance",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "held#0"
       ]
     },
-    "365": {
+    "418": {
       "op": "swap",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
         "held#0",
-        "tmp%3#0"
+        "tmp%5#0"
       ]
     },
-    "366": {
+    "419": {
       "op": "-",
       "defined_out": [
         "lot#0",
@@ -2675,20 +3018,20 @@
         "quantity#0",
         "remaining#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "to#0"
       ],
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
         "remaining#0"
       ]
     },
-    "367": {
+    "420": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -2696,50 +3039,50 @@
         "quantity#0",
         "remaining#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "to#0"
       ],
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
         "remaining#0",
         "remaining#0"
       ]
     },
-    "368": {
+    "421": {
       "op": "bnz transfer_else_body@3",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
         "remaining#0"
       ]
     },
-    "371": {
+    "424": {
       "op": "pop",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0"
       ]
     },
-    "372": {
+    "425": {
       "op": "box_del",
       "defined_out": [
         "lot#0",
         "quantity#0",
         "sender_key#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "to#0",
         "{box_del}"
       ],
@@ -2747,28 +3090,28 @@
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "{box_del}"
       ]
     },
-    "373": {
+    "426": {
       "op": "pop",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0"
       ]
     },
-    "374": {
+    "427": {
       "block": "transfer_after_if_else@4",
       "stack_in": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0"
       ],
       "op": "uncover 3",
@@ -2778,12 +3121,12 @@
       "stack_out": [
         "quantity#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "lot#0"
       ]
     },
-    "376": {
+    "429": {
       "op": "uncover 3",
       "defined_out": [
         "lot#0",
@@ -2791,13 +3134,13 @@
       ],
       "stack_out": [
         "quantity#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "lot#0",
         "to#0"
       ]
     },
-    "378": {
+    "431": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -2805,25 +3148,25 @@
       ],
       "stack_out": [
         "quantity#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "lot#0",
         "to#0 (copy)",
         "to#0 (copy)"
       ]
     },
-    "379": {
+    "432": {
       "op": "cover 2",
       "stack_out": [
         "quantity#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "to#0",
         "lot#0",
         "to#0 (copy)"
       ]
     },
-    "381": {
+    "434": {
       "op": "concat",
       "defined_out": [
         "recipient_key#0",
@@ -2831,13 +3174,13 @@
       ],
       "stack_out": [
         "quantity#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "to#0",
         "recipient_key#0"
       ]
     },
-    "382": {
+    "435": {
       "op": "bytec_1 // 0x62",
       "defined_out": [
         "0x62",
@@ -2846,25 +3189,25 @@
       ],
       "stack_out": [
         "quantity#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "to#0",
         "recipient_key#0",
         "0x62"
       ]
     },
-    "383": {
+    "436": {
       "op": "swap",
       "stack_out": [
         "quantity#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "to#0",
         "0x62",
         "recipient_key#0"
       ]
     },
-    "384": {
+    "437": {
       "op": "concat",
       "defined_out": [
         "map_prefixed_key%5#0",
@@ -2872,13 +3215,13 @@
       ],
       "stack_out": [
         "quantity#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "to#0",
         "map_prefixed_key%5#0"
       ]
     },
-    "385": {
+    "438": {
       "op": "dup",
       "defined_out": [
         "map_prefixed_key%5#0",
@@ -2887,14 +3230,14 @@
       ],
       "stack_out": [
         "quantity#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "to#0",
         "map_prefixed_key%5#0",
         "map_prefixed_key%5#0 (copy)"
       ]
     },
-    "386": {
+    "439": {
       "op": "box_get",
       "defined_out": [
         "map_prefixed_key%5#0",
@@ -2904,7 +3247,7 @@
       ],
       "stack_out": [
         "quantity#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "to#0",
         "map_prefixed_key%5#0",
@@ -2912,11 +3255,11 @@
         "maybe_exists%2#0"
       ]
     },
-    "387": {
+    "440": {
       "op": "swap",
       "stack_out": [
         "quantity#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "to#0",
         "map_prefixed_key%5#0",
@@ -2924,7 +3267,7 @@
         "maybe_value%1#0"
       ]
     },
-    "388": {
+    "441": {
       "op": "btoi",
       "defined_out": [
         "map_prefixed_key%5#0",
@@ -2934,7 +3277,7 @@
       ],
       "stack_out": [
         "quantity#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "to#0",
         "map_prefixed_key%5#0",
@@ -2942,7 +3285,7 @@
         "maybe_value_converted%1#0"
       ]
     },
-    "389": {
+    "442": {
       "op": "intc_1 // 0",
       "defined_out": [
         "0",
@@ -2953,7 +3296,7 @@
       ],
       "stack_out": [
         "quantity#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "to#0",
         "map_prefixed_key%5#0",
@@ -2962,11 +3305,11 @@
         "0"
       ]
     },
-    "390": {
+    "443": {
       "op": "swap",
       "stack_out": [
         "quantity#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "to#0",
         "map_prefixed_key%5#0",
@@ -2975,11 +3318,11 @@
         "maybe_value_converted%1#0"
       ]
     },
-    "391": {
+    "444": {
       "op": "uncover 2",
       "stack_out": [
         "quantity#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "to#0",
         "map_prefixed_key%5#0",
@@ -2988,7 +3331,7 @@
         "maybe_exists%2#0"
       ]
     },
-    "393": {
+    "446": {
       "op": "select",
       "defined_out": [
         "map_prefixed_key%5#0",
@@ -2997,19 +3340,19 @@
       ],
       "stack_out": [
         "quantity#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "to#0",
         "map_prefixed_key%5#0",
         "state_get%1#0"
       ]
     },
-    "394": {
+    "447": {
       "op": "uncover 4",
       "defined_out": [
         "map_prefixed_key%5#0",
         "state_get%1#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "to#0"
       ],
       "stack_out": [
@@ -3018,14 +3361,14 @@
         "to#0",
         "map_prefixed_key%5#0",
         "state_get%1#0",
-        "tmp%3#0"
+        "tmp%5#0"
       ]
     },
-    "396": {
+    "449": {
       "op": "+",
       "defined_out": [
         "map_prefixed_key%5#0",
-        "tmp%16#0",
+        "tmp%18#0",
         "to#0"
       ],
       "stack_out": [
@@ -3033,10 +3376,10 @@
         "sender_key#0",
         "to#0",
         "map_prefixed_key%5#0",
-        "tmp%16#0"
+        "tmp%18#0"
       ]
     },
-    "397": {
+    "450": {
       "op": "itob",
       "defined_out": [
         "encoded_value%1#0",
@@ -3051,7 +3394,7 @@
         "encoded_value%1#0"
       ]
     },
-    "398": {
+    "451": {
       "op": "box_put",
       "defined_out": [
         "sender_key#0",
@@ -3063,7 +3406,7 @@
         "to#0"
       ]
     },
-    "399": {
+    "452": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%2#0"
@@ -3073,7 +3416,7 @@
         "aggregate%head%2#0"
       ]
     },
-    "400": {
+    "453": {
       "op": "swap",
       "defined_out": [
         "aggregate%head%2#0",
@@ -3084,7 +3427,7 @@
         "quantity#0"
       ]
     },
-    "401": {
+    "454": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%3#0"
@@ -3093,7 +3436,7 @@
         "aggregate%head%3#0"
       ]
     },
-    "402": {
+    "455": {
       "op": "pushbytes 0x17318e8d // method \"Transferred(uint64,address,address,uint64)\"",
       "defined_out": [
         "Method(Transferred(uint64,address,address,uint64))",
@@ -3104,14 +3447,14 @@
         "Method(Transferred(uint64,address,address,uint64))"
       ]
     },
-    "408": {
+    "461": {
       "op": "swap",
       "stack_out": [
         "Method(Transferred(uint64,address,address,uint64))",
         "aggregate%head%3#0"
       ]
     },
-    "409": {
+    "462": {
       "op": "concat",
       "defined_out": [
         "event%0#0"
@@ -3120,11 +3463,11 @@
         "event%0#0"
       ]
     },
-    "410": {
+    "463": {
       "op": "log",
       "stack_out": []
     },
-    "411": {
+    "464": {
       "op": "intc_0 // 1",
       "defined_out": [
         "1"
@@ -3133,17 +3476,17 @@
         "1"
       ]
     },
-    "412": {
+    "465": {
       "op": "return",
       "stack_out": []
     },
-    "413": {
+    "466": {
       "block": "transfer_else_body@3",
       "stack_in": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
         "remaining#0"
@@ -3157,26 +3500,26 @@
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0",
         "map_prefixed_key%2#0",
         "encoded_value%0#0"
       ]
     },
-    "414": {
+    "467": {
       "op": "box_put",
       "stack_out": [
         "quantity#0",
         "lot#0",
         "to#0",
-        "tmp%3#0",
+        "tmp%5#0",
         "sender_key#0"
       ]
     },
-    "415": {
+    "468": {
       "op": "b transfer_after_if_else@4"
     },
-    "418": {
+    "471": {
       "subroutine": "contracts.traceability.contract.Traceability.retire_lot[routing]",
       "params": {},
       "block": "retire_lot",
@@ -3189,7 +3532,7 @@
         "lot#0"
       ]
     },
-    "421": {
+    "474": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -3200,7 +3543,7 @@
         "lot#0 (copy)"
       ]
     },
-    "422": {
+    "475": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -3211,7 +3554,7 @@
         "len%0#0"
       ]
     },
-    "423": {
+    "476": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -3224,7 +3567,7 @@
         "8"
       ]
     },
-    "424": {
+    "477": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -3235,14 +3578,14 @@
         "eq%0#0"
       ]
     },
-    "425": {
+    "478": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "lot#0"
       ]
     },
-    "426": {
+    "479": {
       "op": "bytec_0 // 0x6c",
       "defined_out": [
         "0x6c",
@@ -3253,7 +3596,7 @@
         "0x6c"
       ]
     },
-    "427": {
+    "480": {
       "op": "dig 1",
       "stack_out": [
         "lot#0",
@@ -3261,7 +3604,7 @@
         "lot#0 (copy)"
       ]
     },
-    "429": {
+    "482": {
       "op": "concat",
       "defined_out": [
         "lot#0",
@@ -3272,7 +3615,7 @@
         "map_prefixed_key%0#0"
       ]
     },
-    "430": {
+    "483": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -3285,7 +3628,7 @@
         "map_prefixed_key%0#0 (copy)"
       ]
     },
-    "431": {
+    "484": {
       "op": "box_len",
       "defined_out": [
         "_%0#0",
@@ -3300,7 +3643,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "432": {
+    "485": {
       "op": "bury 1",
       "stack_out": [
         "lot#0",
@@ -3308,7 +3651,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "434": {
+    "487": {
       "error": "unknown lot",
       "op": "assert // unknown lot",
       "stack_out": [
@@ -3316,7 +3659,7 @@
         "map_prefixed_key%0#0"
       ]
     },
-    "435": {
+    "488": {
       "op": "dup",
       "stack_out": [
         "lot#0",
@@ -3324,7 +3667,7 @@
         "map_prefixed_key%0#0 (copy)"
       ]
     },
-    "436": {
+    "489": {
       "op": "box_get",
       "defined_out": [
         "aggregate%box_get%1#0",
@@ -3339,7 +3682,7 @@
         "aggregate%box_get%1#0"
       ]
     },
-    "437": {
+    "490": {
       "op": "pop",
       "stack_out": [
         "lot#0",
@@ -3347,7 +3690,7 @@
         "info#0"
       ]
     },
-    "438": {
+    "491": {
       "op": "dup",
       "defined_out": [
         "info#0",
@@ -3362,7 +3705,7 @@
         "info#0 (copy)"
       ]
     },
-    "439": {
+    "492": {
       "op": "extract 0 32",
       "defined_out": [
         "aggregate%extract%0#0",
@@ -3377,7 +3720,7 @@
         "aggregate%extract%0#0"
       ]
     },
-    "442": {
+    "495": {
       "op": "txn Sender",
       "defined_out": [
         "aggregate%extract%0#0",
@@ -3394,7 +3737,7 @@
         "tmp%0#1"
       ]
     },
-    "444": {
+    "497": {
       "op": "==",
       "defined_out": [
         "info#0",
@@ -3409,7 +3752,7 @@
         "tmp%1#0"
       ]
     },
-    "445": {
+    "498": {
       "error": "producer only",
       "op": "assert // producer only",
       "stack_out": [
@@ -3418,7 +3761,7 @@
         "info#0"
       ]
     },
-    "446": {
+    "499": {
       "op": "pushint 320",
       "defined_out": [
         "320",
@@ -3433,7 +3776,7 @@
         "320"
       ]
     },
-    "449": {
+    "502": {
       "op": "intc_1 // 0",
       "defined_out": [
         "0",
@@ -3450,7 +3793,7 @@
         "0"
       ]
     },
-    "450": {
+    "503": {
       "op": "setbit",
       "stack_out": [
         "lot#0",
@@ -3458,7 +3801,7 @@
         "info#0"
       ]
     },
-    "451": {
+    "504": {
       "op": "dig 1",
       "stack_out": [
         "lot#0",
@@ -3467,7 +3810,7 @@
         "map_prefixed_key%0#0 (copy)"
       ]
     },
-    "453": {
+    "506": {
       "op": "pushint 40",
       "defined_out": [
         "40",
@@ -3484,7 +3827,7 @@
         "40"
       ]
     },
-    "455": {
+    "508": {
       "op": "intc_0 // 1",
       "defined_out": [
         "1",
@@ -3503,7 +3846,7 @@
         "1"
       ]
     },
-    "456": {
+    "509": {
       "op": "box_extract",
       "defined_out": [
         "box%box_extract%0#0",
@@ -3518,7 +3861,7 @@
         "box%box_extract%0#0"
       ]
     },
-    "457": {
+    "510": {
       "op": "intc_1 // 0",
       "stack_out": [
         "lot#0",
@@ -3528,7 +3871,7 @@
         "0"
       ]
     },
-    "458": {
+    "511": {
       "op": "dup",
       "stack_out": [
         "lot#0",
@@ -3539,7 +3882,7 @@
         "0"
       ]
     },
-    "459": {
+    "512": {
       "op": "setbit",
       "defined_out": [
         "aggregate%updated_target%0#0",
@@ -3554,7 +3897,7 @@
         "aggregate%updated_target%0#0"
       ]
     },
-    "460": {
+    "513": {
       "op": "uncover 2",
       "stack_out": [
         "lot#0",
@@ -3563,7 +3906,7 @@
         "map_prefixed_key%0#0"
       ]
     },
-    "462": {
+    "515": {
       "op": "pushint 40",
       "stack_out": [
         "lot#0",
@@ -3573,7 +3916,7 @@
         "40"
       ]
     },
-    "464": {
+    "517": {
       "op": "uncover 2",
       "stack_out": [
         "lot#0",
@@ -3583,7 +3926,7 @@
         "aggregate%updated_target%0#0"
       ]
     },
-    "466": {
+    "519": {
       "error": "index out of bounds",
       "op": "box_replace // on error: index out of bounds",
       "stack_out": [
@@ -3591,7 +3934,7 @@
         "info#0"
       ]
     },
-    "467": {
+    "520": {
       "op": "extract 0 32",
       "defined_out": [
         "aggregate%extract%1#0",
@@ -3602,7 +3945,7 @@
         "aggregate%extract%1#0"
       ]
     },
-    "470": {
+    "523": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%1#0"
@@ -3611,7 +3954,7 @@
         "aggregate%head%1#0"
       ]
     },
-    "471": {
+    "524": {
       "op": "pushbytes 0x0c7f9d59 // method \"LotRetired(uint64,address)\"",
       "defined_out": [
         "Method(LotRetired(uint64,address))",
@@ -3622,14 +3965,14 @@
         "Method(LotRetired(uint64,address))"
       ]
     },
-    "477": {
+    "530": {
       "op": "swap",
       "stack_out": [
         "Method(LotRetired(uint64,address))",
         "aggregate%head%1#0"
       ]
     },
-    "478": {
+    "531": {
       "op": "concat",
       "defined_out": [
         "event%0#0"
@@ -3638,21 +3981,21 @@
         "event%0#0"
       ]
     },
-    "479": {
+    "532": {
       "op": "log",
       "stack_out": []
     },
-    "480": {
+    "533": {
       "op": "intc_0 // 1",
       "stack_out": [
         "1"
       ]
     },
-    "481": {
+    "534": {
       "op": "return",
       "stack_out": []
     },
-    "482": {
+    "535": {
       "subroutine": "contracts.traceability.contract.Traceability.balance_of[routing]",
       "params": {},
       "block": "balance_of",
@@ -3665,7 +4008,7 @@
         "lot#0"
       ]
     },
-    "485": {
+    "538": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -3676,7 +4019,7 @@
         "lot#0 (copy)"
       ]
     },
-    "486": {
+    "539": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -3687,7 +4030,7 @@
         "len%0#0"
       ]
     },
-    "487": {
+    "540": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -3700,7 +4043,7 @@
         "8"
       ]
     },
-    "488": {
+    "541": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -3711,14 +4054,14 @@
         "eq%0#0"
       ]
     },
-    "489": {
+    "542": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "lot#0"
       ]
     },
-    "490": {
+    "543": {
       "op": "txna ApplicationArgs 2",
       "defined_out": [
         "account#0",
@@ -3729,7 +4072,7 @@
         "account#0"
       ]
     },
-    "493": {
+    "546": {
       "op": "dup",
       "defined_out": [
         "account#0",
@@ -3742,7 +4085,7 @@
         "account#0 (copy)"
       ]
     },
-    "494": {
+    "547": {
       "op": "len",
       "defined_out": [
         "account#0",
@@ -3755,7 +4098,7 @@
         "len%1#0"
       ]
     },
-    "495": {
+    "548": {
       "op": "intc_3 // 32",
       "defined_out": [
         "32",
@@ -3770,7 +4113,7 @@
         "32"
       ]
     },
-    "496": {
+    "549": {
       "op": "==",
       "defined_out": [
         "account#0",
@@ -3783,7 +4126,7 @@
         "eq%1#0"
       ]
     },
-    "497": {
+    "550": {
       "error": "invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
       "op": "assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
       "stack_out": [
@@ -3791,7 +4134,7 @@
         "account#0"
       ]
     },
-    "498": {
+    "551": {
       "op": "concat",
       "defined_out": [
         "tmp%0#0"
@@ -3800,7 +4143,7 @@
         "tmp%0#0"
       ]
     },
-    "499": {
+    "552": {
       "op": "bytec_1 // 0x62",
       "defined_out": [
         "0x62",
@@ -3811,14 +4154,14 @@
         "0x62"
       ]
     },
-    "500": {
+    "553": {
       "op": "swap",
       "stack_out": [
         "0x62",
         "tmp%0#0"
       ]
     },
-    "501": {
+    "554": {
       "op": "concat",
       "defined_out": [
         "map_prefixed_key%0#0"
@@ -3827,7 +4170,7 @@
         "map_prefixed_key%0#0"
       ]
     },
-    "502": {
+    "555": {
       "op": "box_get",
       "defined_out": [
         "maybe_exists%0#0",
@@ -3838,14 +4181,14 @@
         "maybe_exists%0#0"
       ]
     },
-    "503": {
+    "556": {
       "op": "swap",
       "stack_out": [
         "maybe_exists%0#0",
         "maybe_value%0#0"
       ]
     },
-    "504": {
+    "557": {
       "op": "btoi",
       "defined_out": [
         "maybe_exists%0#0",
@@ -3856,7 +4199,7 @@
         "maybe_value_converted%0#0"
       ]
     },
-    "505": {
+    "558": {
       "op": "intc_1 // 0",
       "defined_out": [
         "0",
@@ -3869,7 +4212,7 @@
         "0"
       ]
     },
-    "506": {
+    "559": {
       "op": "swap",
       "stack_out": [
         "maybe_exists%0#0",
@@ -3877,7 +4220,7 @@
         "maybe_value_converted%0#0"
       ]
     },
-    "507": {
+    "560": {
       "op": "uncover 2",
       "stack_out": [
         "0",
@@ -3885,7 +4228,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "509": {
+    "562": {
       "op": "select",
       "defined_out": [
         "state_get%0#0"
@@ -3894,7 +4237,7 @@
         "state_get%0#0"
       ]
     },
-    "510": {
+    "563": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0"
@@ -3903,8 +4246,8 @@
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "511": {
-      "op": "bytec_2 // 0x151f7c75",
+    "564": {
+      "op": "bytec_3 // 0x151f7c75",
       "defined_out": [
         "0x151f7c75",
         "aggregate%val_as_bytes%0#0"
@@ -3914,14 +4257,14 @@
         "0x151f7c75"
       ]
     },
-    "512": {
+    "565": {
       "op": "swap",
       "stack_out": [
         "0x151f7c75",
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "513": {
+    "566": {
       "op": "concat",
       "defined_out": [
         "tmp%4#0"
@@ -3930,11 +4273,11 @@
         "tmp%4#0"
       ]
     },
-    "514": {
+    "567": {
       "op": "log",
       "stack_out": []
     },
-    "515": {
+    "568": {
       "op": "intc_0 // 1",
       "defined_out": [
         "1"
@@ -3943,11 +4286,11 @@
         "1"
       ]
     },
-    "516": {
+    "569": {
       "op": "return",
       "stack_out": []
     },
-    "517": {
+    "570": {
       "subroutine": "contracts.traceability.contract.Traceability.lot_info[routing]",
       "params": {},
       "block": "lot_info",
@@ -3960,7 +4303,7 @@
         "lot#0"
       ]
     },
-    "520": {
+    "573": {
       "op": "dup",
       "defined_out": [
         "lot#0",
@@ -3971,7 +4314,7 @@
         "lot#0 (copy)"
       ]
     },
-    "521": {
+    "574": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -3982,7 +4325,7 @@
         "len%0#0"
       ]
     },
-    "522": {
+    "575": {
       "op": "intc_2 // 8",
       "defined_out": [
         "8",
@@ -3995,7 +4338,7 @@
         "8"
       ]
     },
-    "523": {
+    "576": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -4006,14 +4349,14 @@
         "eq%0#0"
       ]
     },
-    "524": {
+    "577": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "lot#0"
       ]
     },
-    "525": {
+    "578": {
       "op": "bytec_0 // 0x6c",
       "defined_out": [
         "0x6c",
@@ -4024,14 +4367,14 @@
         "0x6c"
       ]
     },
-    "526": {
+    "579": {
       "op": "swap",
       "stack_out": [
         "0x6c",
         "lot#0"
       ]
     },
-    "527": {
+    "580": {
       "op": "concat",
       "defined_out": [
         "map_prefixed_key%0#0"
@@ -4040,7 +4383,7 @@
         "map_prefixed_key%0#0"
       ]
     },
-    "528": {
+    "581": {
       "op": "dup",
       "defined_out": [
         "map_prefixed_key%0#0",
@@ -4051,7 +4394,7 @@
         "map_prefixed_key%0#0 (copy)"
       ]
     },
-    "529": {
+    "582": {
       "op": "box_len",
       "defined_out": [
         "_%0#0",
@@ -4064,21 +4407,21 @@
         "maybe_exists%0#0"
       ]
     },
-    "530": {
+    "583": {
       "op": "bury 1",
       "stack_out": [
         "map_prefixed_key%0#0",
         "maybe_exists%0#0"
       ]
     },
-    "532": {
+    "585": {
       "error": "unknown lot",
       "op": "assert // unknown lot",
       "stack_out": [
         "map_prefixed_key%0#0"
       ]
     },
-    "533": {
+    "586": {
       "op": "box_get",
       "defined_out": [
         "aggregate%box_get%0#0",
@@ -4089,14 +4432,14 @@
         "aggregate%box_get%1#0"
       ]
     },
-    "534": {
+    "587": {
       "op": "pop",
       "stack_out": [
         "aggregate%box_get%0#0"
       ]
     },
-    "535": {
-      "op": "bytec_2 // 0x151f7c75",
+    "588": {
+      "op": "bytec_3 // 0x151f7c75",
       "defined_out": [
         "0x151f7c75",
         "aggregate%box_get%0#0"
@@ -4106,14 +4449,14 @@
         "0x151f7c75"
       ]
     },
-    "536": {
+    "589": {
       "op": "swap",
       "stack_out": [
         "0x151f7c75",
         "aggregate%box_get%0#0"
       ]
     },
-    "537": {
+    "590": {
       "op": "concat",
       "defined_out": [
         "tmp%2#0"
@@ -4122,11 +4465,11 @@
         "tmp%2#0"
       ]
     },
-    "538": {
+    "591": {
       "op": "log",
       "stack_out": []
     },
-    "539": {
+    "592": {
       "op": "intc_0 // 1",
       "defined_out": [
         "1"
@@ -4135,11 +4478,11 @@
         "1"
       ]
     },
-    "540": {
+    "593": {
       "op": "return",
       "stack_out": []
     },
-    "541": {
+    "594": {
       "subroutine": "contracts.traceability.contract.Traceability._role",
       "params": {
         "account#0": "bytes"
@@ -4148,8 +4491,8 @@
       "stack_in": [],
       "op": "proto 1 1"
     },
-    "544": {
-      "op": "bytec_3 // 0x61",
+    "597": {
+      "op": "bytec_2 // 0x61",
       "defined_out": [
         "0x61"
       ],
@@ -4157,7 +4500,7 @@
         "0x61"
       ]
     },
-    "545": {
+    "598": {
       "op": "frame_dig -1",
       "defined_out": [
         "0x61",
@@ -4168,7 +4511,7 @@
         "account#0 (copy)"
       ]
     },
-    "547": {
+    "600": {
       "op": "concat",
       "defined_out": [
         "map_prefixed_key%0#0"
@@ -4177,7 +4520,7 @@
         "map_prefixed_key%0#0"
       ]
     },
-    "548": {
+    "601": {
       "op": "box_get",
       "defined_out": [
         "maybe_exists%0#0",
@@ -4188,7 +4531,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "549": {
+    "602": {
       "op": "pushbytes 0x00",
       "defined_out": [
         "0x00",
@@ -4201,7 +4544,7 @@
         "0x00"
       ]
     },
-    "552": {
+    "605": {
       "op": "cover 2",
       "stack_out": [
         "0x00",
@@ -4209,7 +4552,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "554": {
+    "607": {
       "op": "select",
       "defined_out": [
         "state_get%0#0"
@@ -4218,7 +4561,7 @@
         "state_get%0#0"
       ]
     },
-    "555": {
+    "608": {
       "op": "btoi",
       "defined_out": [
         "tmp%1#0"
@@ -4227,7 +4570,7 @@
         "tmp%1#0"
       ]
     },
-    "556": {
+    "609": {
       "retsub": true,
       "op": "retsub"
     }

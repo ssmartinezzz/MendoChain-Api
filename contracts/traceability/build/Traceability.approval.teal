@@ -4,22 +4,22 @@
 // algopy.arc4.ARC4Contract.approval_program() -> uint64:
 main:
     intcblock 1 0 8 32
-    bytecblock 0x6c 0x62 0x151f7c75 0x61
-    // contract.py:50
+    bytecblock 0x6c 0x62 0x61 0x151f7c75
+    // contract.py:55
     // class Traceability(ARC4Contract):
     txn NumAppArgs
-    bz main___algopy_default_create@16
+    bz main___algopy_default_create@17
     txn OnCompletion
     !
     assert
     txn ApplicationID
     assert
-    pushbytess 0xc8855261 0x5d33c3a2 0xdd1ae270 0x075d6ad2 0x3e0b50dd 0x4780d80d 0xa02083df // method "register_actor(address,uint8)void", method "role_of(address)uint64", method "register_lot(uint64,uint64)void", method "transfer(uint64,address,uint64)void", method "retire_lot(uint64)void", method "balance_of(uint64,address)uint64", method "lot_info(uint64)(address,uint64,bool)"
+    pushbytess 0xc8855261 0x2ac6cb14 0x5d33c3a2 0xdd1ae270 0x075d6ad2 0x3e0b50dd 0x4780d80d 0xa02083df // method "register_actor(address,uint8)void", method "revoke_actor(address)void", method "role_of(address)uint64", method "register_lot(uint64,uint64)void", method "transfer(uint64,address,uint64)void", method "retire_lot(uint64)void", method "balance_of(uint64,address)uint64", method "lot_info(uint64)(address,uint64,bool)"
     txna ApplicationArgs 0
-    match register_actor role_of register_lot transfer retire_lot balance_of lot_info
+    match register_actor revoke_actor role_of register_lot transfer retire_lot balance_of lot_info
     err
 
-main___algopy_default_create@16:
+main___algopy_default_create@17:
     txn OnCompletion
     !
     txn ApplicationID
@@ -30,7 +30,7 @@ main___algopy_default_create@16:
 
 // contracts.traceability.contract.Traceability.register_actor[routing]() -> void:
 register_actor:
-    // contract.py:57
+    // contract.py:62
     // @arc4.abimethod()
     txna ApplicationArgs 1
     dup
@@ -44,13 +44,13 @@ register_actor:
     intc_0 // 1
     ==
     assert // invalid number of bytes for arc4.uint8
-    // contract.py:59
+    // contract.py:64
     // assert Txn.sender == Global.creator_address, "admin only"
     txn Sender
     global CreatorAddress
     ==
     assert // admin only
-    // contract.py:60
+    // contract.py:65
     // assert role.as_uint64() >= WINERY and role.as_uint64() <= RETAILER, "unknown role"
     btoi
     dup
@@ -63,12 +63,12 @@ register_actor:
     intc_0 // 1
 
 register_actor_bool_merge@5:
-    // contract.py:60
+    // contract.py:65
     // assert role.as_uint64() >= WINERY and role.as_uint64() <= RETAILER, "unknown role"
     assert // unknown role
-    // contract.py:61
+    // contract.py:66
     // self.roles[account] = role
-    bytec_3 // 0x61
+    bytec_2 // 0x61
     uncover 2
     dup
     cover 2
@@ -77,14 +77,14 @@ register_actor_bool_merge@5:
     dup
     cover 2
     box_put
-    // contract.py:62
+    // contract.py:67
     // arc4.emit(ActorRegistered(account, role))
     concat
     pushbytes 0x69875366 // method "ActorRegistered(address,uint8)"
     swap
     concat
     log
-    // contract.py:57
+    // contract.py:62
     // @arc4.abimethod()
     intc_0 // 1
     return
@@ -94,9 +94,57 @@ register_actor_bool_false@4:
     b register_actor_bool_merge@5
 
 
+// contracts.traceability.contract.Traceability.revoke_actor[routing]() -> void:
+revoke_actor:
+    // contract.py:69
+    // @arc4.abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_3 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // contract.py:72
+    // assert Txn.sender == Global.creator_address, "admin only"
+    txn Sender
+    global CreatorAddress
+    ==
+    assert // admin only
+    // contract.py:73
+    // assert account in self.roles, "unknown actor"
+    bytec_2 // 0x61
+    dig 1
+    concat
+    dup
+    box_len
+    bury 1
+    assert // unknown actor
+    // contract.py:74
+    // role = self.roles[account]
+    dup
+    box_get
+    pop
+    swap
+    // contract.py:75
+    // del self.roles[account]
+    box_del
+    pop
+    // contract.py:76
+    // arc4.emit(ActorRevoked(account, role))
+    concat
+    pushbytes 0xecee12fd // method "ActorRevoked(address,uint8)"
+    swap
+    concat
+    log
+    // contract.py:69
+    // @arc4.abimethod()
+    intc_0 // 1
+    return
+
+
 // contracts.traceability.contract.Traceability.role_of[routing]() -> void:
 role_of:
-    // contract.py:64
+    // contract.py:78
     // @arc4.abimethod(readonly=True)
     txna ApplicationArgs 1
     dup
@@ -104,13 +152,13 @@ role_of:
     intc_3 // 32
     ==
     assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
-    // contract.py:66
+    // contract.py:80
     // return self._role(account)
     callsub _role
-    // contract.py:64
+    // contract.py:78
     // @arc4.abimethod(readonly=True)
     itob
-    bytec_2 // 0x151f7c75
+    bytec_3 // 0x151f7c75
     swap
     concat
     log
@@ -120,7 +168,7 @@ role_of:
 
 // contracts.traceability.contract.Traceability.register_lot[routing]() -> void:
 register_lot:
-    // contract.py:68
+    // contract.py:82
     // @arc4.abimethod()
     txna ApplicationArgs 1
     dup
@@ -134,17 +182,17 @@ register_lot:
     intc_2 // 8
     ==
     assert // invalid number of bytes for arc4.uint64
-    // contract.py:70
+    // contract.py:84
     // producer = arc4.Address(Txn.sender)
     txn Sender
-    // contract.py:71
+    // contract.py:85
     // assert self._role(producer) == WINERY, "winery only"
     dup
     callsub _role
     intc_0 // 1
     ==
     assert // winery only
-    // contract.py:72
+    // contract.py:86
     // assert lot not in self.lots, "lot exists"
     bytec_0 // 0x6c
     dig 3
@@ -154,13 +202,13 @@ register_lot:
     bury 1
     !
     assert // lot exists
-    // contract.py:73
+    // contract.py:87
     // assert total.as_uint64() > 0, "empty lot"
     dig 2
     btoi
     dup
     assert // empty lot
-    // contract.py:75
+    // contract.py:89
     // self.lots[lot] = LotInfo(producer, total, arc4.Bool(True))
     dig 2
     dig 4
@@ -170,12 +218,12 @@ register_lot:
     uncover 2
     swap
     box_put
-    // contract.py:47
+    // contract.py:52
     // return op.concat(lot.bytes, account.bytes)
     uncover 3
     uncover 2
     concat
-    // contract.py:76
+    // contract.py:90
     // self.balances[balance_key(lot, producer)] = total.as_uint64()
     bytec_1 // 0x62
     dig 1
@@ -183,7 +231,7 @@ register_lot:
     uncover 2
     itob
     box_put
-    // contract.py:77
+    // contract.py:91
     // arc4.emit(LotRegistered(lot, producer, total))
     swap
     concat
@@ -191,7 +239,7 @@ register_lot:
     swap
     concat
     log
-    // contract.py:68
+    // contract.py:82
     // @arc4.abimethod()
     intc_0 // 1
     return
@@ -199,7 +247,7 @@ register_lot:
 
 // contracts.traceability.contract.Traceability.transfer[routing]() -> void:
 transfer:
-    // contract.py:79
+    // contract.py:93
     // @arc4.abimethod()
     txna ApplicationArgs 1
     dupn 2
@@ -223,10 +271,10 @@ transfer:
     intc_2 // 8
     ==
     assert // invalid number of bytes for arc4.uint64
-    // contract.py:81
+    // contract.py:95
     // sender = arc4.Address(Txn.sender)
     txn Sender
-    // contract.py:82
+    // contract.py:96
     // assert lot in self.lots, "unknown lot"
     bytec_0 // 0x6c
     dig 4
@@ -235,7 +283,7 @@ transfer:
     box_len
     bury 1
     assert // unknown lot
-    // contract.py:83
+    // contract.py:97
     // assert self.lots[lot].active.native, "lot retired"
     box_get
     pop
@@ -248,7 +296,12 @@ transfer:
     intc_1 // 0
     getbit
     assert // lot retired
-    // contract.py:84
+    // contract.py:98
+    // assert self._role(sender) != 0, "unknown sender"
+    dup
+    callsub _role
+    assert // unknown sender
+    // contract.py:99
     // assert quantity.as_uint64() > 0, "empty transfer"
     swap
     btoi
@@ -256,24 +309,24 @@ transfer:
     cover 4
     dup
     assert // empty transfer
-    // contract.py:85
+    // contract.py:100
     // assert to != sender, "self transfer"
     dig 2
     dig 2
     !=
     assert // self transfer
-    // contract.py:86
+    // contract.py:101
     // assert self._role(to) != 0, "unknown recipient"
     uncover 2
     callsub _role
     assert // unknown recipient
-    // contract.py:47
+    // contract.py:52
     // return op.concat(lot.bytes, account.bytes)
     cover 2
     concat
     dup
     cover 2
-    // contract.py:89
+    // contract.py:104
     // held = self.balances.get(sender_key, default=UInt64(0))
     bytec_1 // 0x62
     swap
@@ -287,36 +340,36 @@ transfer:
     swap
     uncover 2
     select
-    // contract.py:90
+    // contract.py:105
     // assert held >= quantity.as_uint64(), "insufficient balance"
     dup
     dig 2
     >=
     assert // insufficient balance
-    // contract.py:92
+    // contract.py:107
     // remaining = held - quantity.as_uint64()
     swap
     -
     dup
-    // contract.py:93
+    // contract.py:108
     // if remaining == 0:
     bnz transfer_else_body@3
     pop
-    // contract.py:94-95
+    // contract.py:109-110
     // # Frees the box so its minimum balance returns to the app account.
     // del self.balances[sender_key]
     box_del
     pop
 
 transfer_after_if_else@4:
-    // contract.py:47
+    // contract.py:52
     // return op.concat(lot.bytes, account.bytes)
     uncover 3
     uncover 3
     dup
     cover 2
     concat
-    // contract.py:100
+    // contract.py:115
     // self.balances[recipient_key] = self.balances.get(recipient_key, default=UInt64(0)) + quantity.as_uint64()
     bytec_1 // 0x62
     swap
@@ -333,7 +386,7 @@ transfer_after_if_else@4:
     +
     itob
     box_put
-    // contract.py:101
+    // contract.py:116
     // arc4.emit(Transferred(lot, sender, to, quantity))
     concat
     swap
@@ -342,13 +395,13 @@ transfer_after_if_else@4:
     swap
     concat
     log
-    // contract.py:79
+    // contract.py:93
     // @arc4.abimethod()
     intc_0 // 1
     return
 
 transfer_else_body@3:
-    // contract.py:97
+    // contract.py:112
     // self.balances[sender_key] = remaining
     itob
     box_put
@@ -357,7 +410,7 @@ transfer_else_body@3:
 
 // contracts.traceability.contract.Traceability.retire_lot[routing]() -> void:
 retire_lot:
-    // contract.py:103
+    // contract.py:118
     // @arc4.abimethod()
     txna ApplicationArgs 1
     dup
@@ -365,7 +418,7 @@ retire_lot:
     intc_2 // 8
     ==
     assert // invalid number of bytes for arc4.uint64
-    // contract.py:105
+    // contract.py:120
     // assert lot in self.lots, "unknown lot"
     bytec_0 // 0x6c
     dig 1
@@ -374,24 +427,24 @@ retire_lot:
     box_len
     bury 1
     assert // unknown lot
-    // contract.py:106
+    // contract.py:121
     // info = self.lots[lot].copy()
     dup
     box_get
     pop
-    // contract.py:107
+    // contract.py:122
     // assert info.producer == arc4.Address(Txn.sender), "producer only"
     dup
     extract 0 32
     txn Sender
     ==
     assert // producer only
-    // contract.py:108
+    // contract.py:123
     // info.active = arc4.Bool(False)
     pushint 320
     intc_1 // 0
     setbit
-    // contract.py:108-109
+    // contract.py:123-124
     // info.active = arc4.Bool(False)
     // self.lots[lot] = info.copy()
     dig 1
@@ -399,10 +452,10 @@ retire_lot:
     intc_0 // 1
     box_extract
     intc_1 // 0
-    // contract.py:108
+    // contract.py:123
     // info.active = arc4.Bool(False)
     dup
-    // contract.py:108-109
+    // contract.py:123-124
     // info.active = arc4.Bool(False)
     // self.lots[lot] = info.copy()
     setbit
@@ -410,7 +463,7 @@ retire_lot:
     pushint 40
     uncover 2
     box_replace // on error: index out of bounds
-    // contract.py:110
+    // contract.py:125
     // arc4.emit(LotRetired(lot, info.producer))
     extract 0 32
     concat
@@ -418,7 +471,7 @@ retire_lot:
     swap
     concat
     log
-    // contract.py:103
+    // contract.py:118
     // @arc4.abimethod()
     intc_0 // 1
     return
@@ -426,7 +479,7 @@ retire_lot:
 
 // contracts.traceability.contract.Traceability.balance_of[routing]() -> void:
 balance_of:
-    // contract.py:112
+    // contract.py:127
     // @arc4.abimethod(readonly=True)
     txna ApplicationArgs 1
     dup
@@ -440,10 +493,10 @@ balance_of:
     intc_3 // 32
     ==
     assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
-    // contract.py:47
+    // contract.py:52
     // return op.concat(lot.bytes, account.bytes)
     concat
-    // contract.py:114
+    // contract.py:129
     // return self.balances.get(balance_key(lot, account), default=UInt64(0))
     bytec_1 // 0x62
     swap
@@ -455,10 +508,10 @@ balance_of:
     swap
     uncover 2
     select
-    // contract.py:112
+    // contract.py:127
     // @arc4.abimethod(readonly=True)
     itob
-    bytec_2 // 0x151f7c75
+    bytec_3 // 0x151f7c75
     swap
     concat
     log
@@ -468,7 +521,7 @@ balance_of:
 
 // contracts.traceability.contract.Traceability.lot_info[routing]() -> void:
 lot_info:
-    // contract.py:116
+    // contract.py:131
     // @arc4.abimethod(readonly=True)
     txna ApplicationArgs 1
     dup
@@ -476,7 +529,7 @@ lot_info:
     intc_2 // 8
     ==
     assert // invalid number of bytes for arc4.uint64
-    // contract.py:118
+    // contract.py:133
     // assert lot in self.lots, "unknown lot"
     bytec_0 // 0x6c
     swap
@@ -485,13 +538,13 @@ lot_info:
     box_len
     bury 1
     assert // unknown lot
-    // contract.py:119
+    // contract.py:134
     // return self.lots[lot]
     box_get
     pop
-    // contract.py:116
+    // contract.py:131
     // @arc4.abimethod(readonly=True)
-    bytec_2 // 0x151f7c75
+    bytec_3 // 0x151f7c75
     swap
     concat
     log
@@ -501,12 +554,12 @@ lot_info:
 
 // contracts.traceability.contract.Traceability._role(account: bytes) -> uint64:
 _role:
-    // contract.py:121
+    // contract.py:136
     // def _role(self, account: arc4.Address) -> UInt64:
     proto 1 1
-    // contract.py:122
+    // contract.py:137
     // return self.roles.get(account, default=arc4.UInt8(0)).as_uint64()
-    bytec_3 // 0x61
+    bytec_2 // 0x61
     frame_dig -1
     concat
     box_get
