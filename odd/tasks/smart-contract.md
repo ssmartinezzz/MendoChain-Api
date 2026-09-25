@@ -34,8 +34,8 @@ Today each movement is a zero-amount payment from one server wallet with free te
 - [x] C3 Custodial actor accounts: encrypted keys, role registration on chain, funding.
 - [x] C4 Domain and ledger port: wine total and producer, movements with sender and recipient; `LedgerGateway` operations; Algorand contract adapter; fake ledger.
 - [x] C5 API: endpoints and serializers for lots, transfers and actors.
-- [ ] C6 Frontend: total bottles on wine creation, recipient on movements.
-- [ ] C7 End-to-end check on LocalNet.
+- [x] C6 Frontend: total bottles on wine creation, recipient on movements.
+- [x] C7 End-to-end check on LocalNet.
 
 ## Acceptance criteria
 - Every rule above is rejected on chain when violated (unit tests) and surfaced by the API as a clear error.
@@ -53,5 +53,13 @@ Today each movement is a zero-amount payment from one server wallet with free te
 - C4b (adapter): RED 7 (stub), GREEN. `AlgorandContractLedger` signs admin calls with PRIVATE_KEY and actor calls with their custodial key; `register_actor` funds and registers in one atomic group. Real LogicError messages include neighbouring assertions from the TEAL excerpt, so the rule is parsed from the header (`in transaction N: <rule>' at PC`) or the `<-- Error` line, never by substring search. `manage.py deploy_traceability --funding N` prints `ALGORAND_APP_ID`. Note adapter and `record()` removed; `ALGORAND_RECEIVER`/`WALLET_ADD` settings dropped. API 103/103 (LocalNet tests included), contracts 19/19.
 - Machine restart stopped LocalNet and removed the `--rm` test DB; both recreated.
 
+- C6 (Mendochain-Web, branch feat/traceability-contract): RED 11 + 1 (lot column), GREEN 39/39; build compiles. Total bottles on wine creation, recipient picker from /api/actors, lot size column, contract errors shown.
+- C7 end-to-end on LocalNet: contract deployed with `manage.py deploy_traceability` (app 1087); admin registered a winery and a distributor through `POST /api/actors`; in the browser the winery created a 100-bottle wine and sent 30 to the distributor; sending 500 showed "Rejected by the traceability contract: insufficient balance." Read directly from the chain: winery 70, distributor 30, and the transfer was signed by the winery's custodial address.
+- README (both repos) documents the contract, deployment, actor onboarding, errors and configuration.
+
+## Pending
+- `.env.example` (API): add `ALGORAND_APP_ID` and `ACTOR_KEYS_SECRET`, drop `WALLET_ADD` and `ALGORAND_RECEIVER`. Blocked by the user's permission rules while working inside the repo.
+- Engram mirror (ambiguous project).
+
 ## Next step
-C6 frontend, then C7 end-to-end on LocalNet; README and `.env.example` (ALGORAND_APP_ID, ACTOR_KEYS_SECRET, drop WALLET_ADD/ALGORAND_RECEIVER).
+Open PRs for both repositories.
