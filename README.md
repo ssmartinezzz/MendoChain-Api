@@ -36,9 +36,9 @@ Reads are public; writes need a JWT (`Authorization: Bearer <token>`) obtained f
 | Method | Path | Description |
 |--------|------|-------------|
 | `POST` | `/login` | Obtain access and refresh tokens |
-| `GET` | `/auth/current_user` | Current user (`{"username": ""}` when anonymous) |
+| `GET` | `/auth/current_user` | Current user, including `is_staff` (`{"username": ""}` when anonymous) |
 | `GET` | `/auth/users` | List users (admins only) |
-| `POST` | `/auth/users` | Create a user (authenticated users) |
+| `POST` | `/auth/users` | Create a user (admins only; prefer `/api/admin/members`) |
 | `GET` `PUT` `PATCH` `DELETE` | `/auth/users/<id>` | A user (the user themself or an admin) |
 | `GET` | `/api/wine` | Active wines, paginated (`?page=`) |
 | `POST` | `/api/wine` | Register a wine and its on-chain lot (winery actors; requires `total_quantity`) |
@@ -50,8 +50,11 @@ Reads are public; writes need a JWT (`Authorization: Bearer <token>`) obtained f
 | `POST` | `/api/transaction` | Transfer bottles to another actor through the contract (`wine`, `recipient`, `quantity >= 1`) |
 | `GET` | `/api/transaction/<id>` | A movement, including retired ones |
 | `DELETE` | `/api/transaction/<id>` | Retire a movement (soft delete) |
-| `GET` | `/api/actors` | Supply-chain actors: id, name, role, address (signed-in users) |
+| `GET` | `/api/actors` | Active supply-chain actors: id, name, role, address (signed-in users) |
 | `POST` | `/api/actors` | Make a user an actor: creates its custodial Algorand account and registers its role on chain (admins; `user`, `role` 1 winery, 2 distributor, 3 retailer) |
+| `DELETE` | `/api/actors/<id>` | Revoke an actor's role on chain (admins) |
+| `GET` | `/api/admin/members` | Every user with its actor and status (admins) |
+| `POST` | `/api/admin/members` | Onboard a member: account + custodial actor + on-chain role in one step (admins; `email`, `password`, `first_name`, `last_name`, `role`) |
 
 Movements cannot be edited: they mirror immutable on-chain transactions. Wines created before the contract are kept as read-only legacy records (no `total_quantity`, cannot move).
 
@@ -65,9 +68,9 @@ Movements cannot be edited: they mirror immutable on-chain transactions. Wines c
 |--------|------|
 | 400 `invalid` | Input validation failed; `details` lists the fields |
 | 401 | Missing credentials |
-| 403 | Not allowed (`not_an_actor`, `winery_only`, `producer_only`, or a permission failure) |
+| 403 | Not allowed (`not_an_actor`, `actor_revoked`, `winery_only`, `producer_only`, or a permission failure) |
 | 404 | Unknown resource (`wine_not_found`, `transaction_not_found`, `not_found`) |
-| 409 | Conflict: a contract rule was rejected on chain (`insufficient_balance`, `unknown_recipient`, `lot_retired`, `self_transfer`, ...), `legacy_wine` or `actor_already_registered`; nothing was stored |
+| 409 | Conflict: a contract rule was rejected on chain (`insufficient_balance`, `unknown_recipient`, `unknown_sender`, `lot_retired`, `self_transfer`, ...), `legacy_wine`, `actor_already_registered`, `actor_already_revoked` or `member_already_exists`; nothing was stored |
 | 502 `ledger_unavailable` | Algorand could not be reached; nothing was stored |
 
 ## Configuration
@@ -95,8 +98,9 @@ Set these in `.env` locally or in the environment when deployed.
 | Method | Caller | Rule |
 |--------|--------|------|
 | `register_actor(account, role)` | admin | role is winery, distributor or retailer |
+| `revoke_actor(account)` | admin | the account had a role; afterwards it cannot register lots, send or receive |
 | `register_lot(lot, total)` | winery | lot is new, `total > 0`; the winery receives every bottle |
-| `transfer(lot, to, quantity)` | holder | lot active, `0 < quantity <= balance`, `to` is another registered actor |
+| `transfer(lot, to, quantity)` | registered holder | lot active, `0 < quantity <= balance`, `to` is another registered actor |
 | `retire_lot(lot)` | producing winery | no more transfers of that lot |
 
 Every change emits an ARC-28 event, so the full history can be read from the chain. Actors use **custodial accounts**: the API generates one Algorand account per actor and stores its key encrypted with `ACTOR_KEYS_SECRET`; each operation is signed by the acting user's account, never by a shared server wallet.
@@ -114,7 +118,11 @@ To point the API at LocalNet, set `ALGOD_ADDRESS=http://localhost:4001`, `ALGOD_
 
 1. Fund the admin account (`PRIVATE_KEY`) on the target network (TestNet dispenser or LocalNet).
 2. `uv run python manage.py deploy_traceability --funding 2` creates the app, funds it for box storage and prints `ALGORAND_APP_ID=...`; add it to the environment.
-3. As an admin user, `POST /api/actors` for each winery, distributor and retailer. Each gets 0.3 ALGO from the admin for its minimum balance and fees.
+3. Create the first admin: `uv run python manage.py createsuperuser`.
+4. Sign in to the web app as that admin and open **Admin** to onboard each winery, distributor and retailer (email, name, initial password, role). Each gets its custodial account and 0.3 ALGO from the contract admin for its minimum balance and fees. There is no public signup: only admins create accounts.
+5. To remove a participant, **Revoke** it in the same panel. The role is removed on chain, the account can no longer operate, and its balances stay on chain as evidence. Revocation cannot be undone.
+
+> Actors are registered in one specific deployment. If the contract is deployed again (new `ALGORAND_APP_ID`), existing actors are not registered in the new app and must be onboarded again.
 
 Box storage costs `2500 + 400 * (key + value bytes)` microAlgos per box, locked in the app account; keep it funded as lots and holders grow.
 
