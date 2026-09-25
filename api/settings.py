@@ -177,9 +177,9 @@ LOGGING = {
 LEDGER_GATEWAY = 'api.traceability.infrastructure.algorand.build_algorand_ledger'
 ALGOD_ADDRESS = os.getenv('ALGOD_ADDRESS', 'https://testnet-api.algonode.cloud')
 ALGOD_TOKEN = os.getenv('ALGOD_TOKEN', '')
-ALGORAND_SENDER = os.getenv('WALLET_ADD')
 ALGORAND_PRIVATE_KEY = os.getenv('PRIVATE_KEY')
-ALGORAND_RECEIVER = os.getenv('ALGORAND_RECEIVER', 'HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA')
+# App id of the deployed Traceability contract (manage.py deploy_traceability).
+ALGORAND_APP_ID = os.getenv('ALGORAND_APP_ID')
 
 # Fernet secret that encrypts custodial actor keys at rest.
 ACTOR_KEYS_SECRET = os.getenv('ACTOR_KEYS_SECRET', '')

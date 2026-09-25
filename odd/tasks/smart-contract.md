@@ -32,7 +32,7 @@ Today each movement is a zero-amount payment from one server wallet with free te
 - [x] C1 Contract: roles, lots, balances, transfers, retirement, events; unit tests; compiles to TEAL + ARC-56 spec.
 - [x] C2 Deployment: `contracts/deploy.py` creates the app from the ARC-56 spec and funds its account; verified on LocalNet. (Settings/management command for TestNet move to C4, with the adapter.)
 - [x] C3 Custodial actor accounts: encrypted keys, role registration on chain, funding.
-- [ ] C4 Domain and ledger port: wine total and producer, movements with sender and recipient; `LedgerGateway` operations; Algorand contract adapter; fake ledger.
+- [x] C4 Domain and ledger port: wine total and producer, movements with sender and recipient; `LedgerGateway` operations; Algorand contract adapter; fake ledger.
 - [x] C5 API: endpoints and serializers for lots, transfers and actors.
 - [ ] C6 Frontend: total bottles on wine creation, recipient on movements.
 - [ ] C7 End-to-end check on LocalNet.
@@ -50,5 +50,8 @@ Today each movement is a zero-amount payment from one server wallet with free te
 - C4a (domain/services/port, fake ledger): RED 16/17, GREEN 17/17. Wine gets `total_quantity` and `producer`, movements get `sender`/`recipient` (migration 0007, nullable for legacy rows). `register_wine` and `retire_wine` call the ledger inside the DB transaction; `transfer_bottles` stores the movement only after the ledger accepts it. New errors: `ForbiddenError` (403: not_an_actor, winery_only, producer_only), `LegacyWine` and `LedgerRuleViolation` (409, code from the contract rule).
 - C5 (API): RED 24/33, GREEN. Create/update input DTOs split (lot size fixed on chain), `recipient` on movements, `/api/actors` (list for signed-in users without email or keys, register for admins). Full suite 99/99.
 
+- C4b (adapter): RED 7 (stub), GREEN. `AlgorandContractLedger` signs admin calls with PRIVATE_KEY and actor calls with their custodial key; `register_actor` funds and registers in one atomic group. Real LogicError messages include neighbouring assertions from the TEAL excerpt, so the rule is parsed from the header (`in transaction N: <rule>' at PC`) or the `<-- Error` line, never by substring search. `manage.py deploy_traceability --funding N` prints `ALGORAND_APP_ID`. Note adapter and `record()` removed; `ALGORAND_RECEIVER`/`WALLET_ADD` settings dropped. API 103/103 (LocalNet tests included), contracts 19/19.
+- Machine restart stopped LocalNet and removed the `--rm` test DB; both recreated.
+
 ## Next step
-C4b: Algorand contract adapter (replaces the note adapter), settings and deploy command, LocalNet tests.
+C6 frontend, then C7 end-to-end on LocalNet; README and `.env.example` (ALGORAND_APP_ID, ACTOR_KEYS_SECRET, drop WALLET_ADD/ALGORAND_RECEIVER).
