@@ -24,6 +24,11 @@ class ActorRegistered(arc4.Struct):
     role: arc4.UInt8
 
 
+class ActorRevoked(arc4.Struct):
+    account: arc4.Address
+    role: arc4.UInt8
+
+
 class LotRegistered(arc4.Struct):
     lot: arc4.UInt64
     producer: arc4.Address
@@ -61,6 +66,15 @@ class Traceability(ARC4Contract):
         self.roles[account] = role
         arc4.emit(ActorRegistered(account, role))
 
+    @arc4.abimethod()
+    def revoke_actor(self, account: arc4.Address) -> None:
+        """Remove the role: the account can no longer register lots, send or receive bottles."""
+        assert Txn.sender == Global.creator_address, "admin only"
+        assert account in self.roles, "unknown actor"
+        role = self.roles[account]
+        del self.roles[account]
+        arc4.emit(ActorRevoked(account, role))
+
     @arc4.abimethod(readonly=True)
     def role_of(self, account: arc4.Address) -> UInt64:
         return self._role(account)
@@ -81,6 +95,7 @@ class Traceability(ARC4Contract):
         sender = arc4.Address(Txn.sender)
         assert lot in self.lots, "unknown lot"
         assert self.lots[lot].active.native, "lot retired"
+        assert self._role(sender) != 0, "unknown sender"
         assert quantity.as_uint64() > 0, "empty transfer"
         assert to != sender, "self transfer"
         assert self._role(to) != 0, "unknown recipient"

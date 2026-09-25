@@ -105,6 +105,22 @@ class ContractLedgerOnLocalNetTests(SimpleTestCase):
             self.ledger.transfer(winery_key, 1, distributor, 1)
         self.assertEqual(raised.exception.rule, 'lot retired')
 
+    def test_revoked_actors_are_frozen(self):
+        winery_key, winery = self.actor(Role.WINERY)
+        _, distributor = self.actor(Role.DISTRIBUTOR)
+        self.ledger.register_lot(winery_key, 3, 10)
+
+        self.assertEqual(len(self.ledger.revoke_actor(winery)), 52)
+
+        with self.assertRaises(LedgerRuleViolation) as raised:
+            self.ledger.transfer(winery_key, 3, distributor, 1)
+        self.assertEqual(raised.exception.rule, 'unknown sender')
+
+    def test_only_registered_actors_can_be_revoked(self):
+        with self.assertRaises(LedgerRuleViolation) as raised:
+            self.ledger.revoke_actor(account.generate_account()[1])
+        self.assertEqual(raised.exception.rule, 'unknown actor')
+
     def test_only_wineries_register_lots(self):
         distributor_key, _ = self.actor(Role.DISTRIBUTOR)
         with self.assertRaises(LedgerRuleViolation) as raised:

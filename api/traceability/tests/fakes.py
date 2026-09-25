@@ -6,6 +6,7 @@ class FakeLedger:
 
     def reset(self):
         self.actors = []
+        self.revoked_actors = []
         self.lots = []
         self.transfers = []
         self.retired = []
@@ -16,6 +17,12 @@ class FakeLedger:
             raise self.error
         self.actors.append((address, role))
         return f'FAKE_ACTOR_TX_{len(self.actors)}'
+
+    def revoke_actor(self, address):
+        if self.error:
+            raise self.error
+        self.revoked_actors.append(address)
+        return f'FAKE_REVOKE_TX_{len(self.revoked_actors)}'
 
     def register_lot(self, signer, lot, total):
         if self.error:

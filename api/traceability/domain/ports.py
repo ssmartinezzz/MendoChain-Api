@@ -12,6 +12,9 @@ class LedgerGateway(Protocol):
     def register_actor(self, address: str, role: int) -> str:
         """Fund `address` and grant it `role`."""
 
+    def revoke_actor(self, address: str) -> str:
+        """Remove the role of `address`: it can no longer register lots, send or receive bottles."""
+
     def register_lot(self, signer: str, lot: int, total: int) -> str:
         """Create lot `lot` with `total` bottles held by the signing winery."""
 

@@ -150,3 +150,51 @@ class TestRetirement:
             contract.register_lot(LOT, arc4.UInt64(10))
         with pytest.raises(AssertionError, match="producer only"), as_sender(context, other_winery):
             contract.retire_lot(LOT)
+
+
+class TestRevocation:
+    @pytest.fixture()
+    def actors(self, context, contract):
+        winery = register(context, contract, WINERY)
+        distributor = register(context, contract, DISTRIBUTOR)
+        with as_sender(context, winery):
+            contract.register_lot(LOT, arc4.UInt64(100))
+            contract.transfer(LOT, arc4.Address(distributor), arc4.UInt64(40))
+        return winery, distributor
+
+    def test_the_admin_revokes_a_role(self, context, contract, actors):
+        _, distributor = actors
+        contract.revoke_actor(arc4.Address(distributor))
+        assert contract.role_of(arc4.Address(distributor)) == 0
+
+    def test_only_the_admin_revokes(self, context, contract, actors):
+        winery, distributor = actors
+        with pytest.raises(AssertionError, match="admin only"), as_sender(context, winery):
+            contract.revoke_actor(arc4.Address(distributor))
+
+    def test_only_registered_accounts_can_be_revoked(self, context, contract):
+        with pytest.raises(AssertionError, match="unknown actor"):
+            contract.revoke_actor(arc4.Address(context.any.account()))
+
+    def test_revoked_actors_cannot_send_their_bottles(self, context, contract, actors):
+        winery, distributor = actors
+        contract.revoke_actor(arc4.Address(distributor))
+        with pytest.raises(AssertionError, match="unknown sender"), as_sender(context, distributor):
+            contract.transfer(LOT, arc4.Address(winery), arc4.UInt64(1))
+
+    def test_revoked_actors_cannot_receive(self, context, contract, actors):
+        winery, distributor = actors
+        contract.revoke_actor(arc4.Address(distributor))
+        with pytest.raises(AssertionError, match="unknown recipient"), as_sender(context, winery):
+            contract.transfer(LOT, arc4.Address(distributor), arc4.UInt64(1))
+
+    def test_revoked_wineries_cannot_register_lots(self, context, contract, actors):
+        winery, _ = actors
+        contract.revoke_actor(arc4.Address(winery))
+        with pytest.raises(AssertionError, match="winery only"), as_sender(context, winery):
+            contract.register_lot(arc4.UInt64(8), arc4.UInt64(10))
+
+    def test_balances_stay_on_chain_after_revocation(self, context, contract, actors):
+        _, distributor = actors
+        contract.revoke_actor(arc4.Address(distributor))
+        assert contract.balance_of(LOT, arc4.Address(distributor)) == 40
