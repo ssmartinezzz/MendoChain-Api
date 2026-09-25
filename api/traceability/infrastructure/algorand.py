@@ -59,6 +59,9 @@ class AlgorandContractLedger:
 
         return self._submit(send)
 
+    def revoke_actor(self, address):
+        return self._call('revoke_actor', [address], None)
+
     def register_lot(self, signer, lot, total):
         return self._call('register_lot', [lot, total], signer)
 
@@ -69,7 +72,8 @@ class AlgorandContractLedger:
         return self._call('retire_lot', [lot], signer)
 
     def _call(self, method, args, private_key):
-        sender = self._signer(private_key)
+        """Call `method` signed by `private_key`, or by the admin when it is None."""
+        sender = self._admin if private_key is None else self._signer(private_key)
         return self._submit(
             lambda: self._app_client().send.call(
                 AppClientMethodCallParams(method=method, args=args, sender=sender.address)
