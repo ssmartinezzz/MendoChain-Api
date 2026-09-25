@@ -13,3 +13,7 @@ class NotFoundError(DomainError):
 
 class UnavailableError(DomainError):
     """An external system the operation depends on could not complete it."""
+
+
+class ConflictError(DomainError):
+    """The operation clashes with the current state, e.g. something already exists."""

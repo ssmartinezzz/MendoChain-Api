@@ -27,3 +27,13 @@ class Transaction(models.Model):
     visibility = models.BooleanField(default=1)
 
 
+
+
+class Actor(models.Model):
+    """Supply-chain participant with a custodial Algorand account."""
+
+    user = models.OneToOneField(User, on_delete=models.PROTECT, related_name='actor')
+    role = models.PositiveSmallIntegerField(choices=[(1, 'Winery'), (2, 'Distributor'), (3, 'Retailer')])
+    address = models.CharField(max_length=58, unique=True)
+    encrypted_private_key = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)

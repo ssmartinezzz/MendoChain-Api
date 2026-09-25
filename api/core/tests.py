@@ -5,7 +5,7 @@ from rest_framework import status
 from rest_framework.test import APIRequestFactory, APITestCase
 from rest_framework.views import APIView
 
-from api.core.errors import NotFoundError, UnavailableError
+from api.core.errors import ConflictError, NotFoundError, UnavailableError
 
 
 class RaisesNotFound(APIView):
@@ -112,3 +112,18 @@ class RequestIdMiddlewareTests(SimpleTestCase):
     def test_request_id_is_exposed_to_allowed_origins(self):
         response = self.client.get(self.url, HTTP_ORIGIN='http://localhost:3000')
         self.assertIn('x-request-id', response['Access-Control-Expose-Headers'].lower())
+
+
+class RaisesConflict(APIView):
+    permission_classes = []
+
+    def get(self, request):
+        raise ConflictError('actor_exists', 'User 3 is already an actor.')
+
+
+class ConflictErrorTests(SimpleTestCase):
+
+    def test_conflict_domain_error_maps_to_409(self):
+        response = RaisesConflict.as_view()(APIRequestFactory().get('/'))
+        self.assertEqual(response.status_code, status.HTTP_409_CONFLICT)
+        self.assertEqual(response.data['error']['code'], 'actor_exists')

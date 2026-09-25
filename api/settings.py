@@ -181,6 +181,9 @@ ALGORAND_SENDER = os.getenv('WALLET_ADD')
 ALGORAND_PRIVATE_KEY = os.getenv('PRIVATE_KEY')
 ALGORAND_RECEIVER = os.getenv('ALGORAND_RECEIVER', 'HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA')
 
+# Fernet secret that encrypts custodial actor keys at rest.
+ACTOR_KEYS_SECRET = os.getenv('ACTOR_KEYS_SECRET', '')
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 

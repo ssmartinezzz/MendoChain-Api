@@ -57,6 +57,7 @@ prepare_env() {
         fi
     fi
     ensure_env SECRET_KEY "$(uv run --no-project python -c 'import secrets; print(secrets.token_urlsafe(50))')"
+    ensure_env ACTOR_KEYS_SECRET "$(uv run --no-project python -c 'import base64, os; print(base64.urlsafe_b64encode(os.urandom(32)).decode())')"
     ensure_env DEBUG true
     ensure_env ALLOWED_HOSTS localhost,127.0.0.1
     ensure_env DB_NAME mendochain

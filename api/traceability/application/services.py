@@ -1,6 +1,8 @@
 """Write-side use cases. Movements mirror immutable ledger entries, so they can be retired but not edited."""
-from api.traceability.domain.errors import TransactionNotFound, WineNotFound
-from api.traceability.models import Transaction, Wine
+from algosdk import account as algorand_account
+
+from api.traceability.domain.errors import ActorAlreadyRegistered, TransactionNotFound, WineNotFound
+from api.traceability.models import Actor, Transaction, Wine
 
 
 def register_wine(data):
@@ -52,4 +54,19 @@ def _ledger_note(wine, quantity):
         f"Content: {wine.content}  \n "
         f"LotN° {wine.lote} \n "
         f"Brand: {wine.brand_name}"
+    )
+
+
+def register_actor(*, user, role, ledger, vault):
+    """Create a custodial Algorand account for `user` and register its role on the ledger first."""
+    if Actor.objects.filter(user=user).exists():
+        raise ActorAlreadyRegistered(user.pk)
+
+    private_key, address = algorand_account.generate_account()
+    ledger.register_actor(address, role)
+    return Actor.objects.create(
+        user=user,
+        role=role,
+        address=address,
+        encrypted_private_key=vault.encrypt(private_key),
     )
